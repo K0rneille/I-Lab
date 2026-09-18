@@ -1,0 +1,17 @@
+
+[
+        {
+        "language" : "fr",
+        "txt" : "ceci est un texte généré en fonction de la langue choisie dans le javascript"
+        },
+        { 
+        "language" : "eng",
+        "txt" : "This text is generated based on the language selected in the JavaScript."
+        }
+
+
+]
+
+
+
+
