@@ -9,9 +9,14 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "i18next": "^26.4.2",
+    "i18next-browser-languagedetector": "^8.2.1",
+    "i18next-vue": "^5.4.0",
     "modern-normalize": "^3.0.1",
     "sass": "^1.104.1",
-    "vue": "^3.5.42"
+    "vue": "^3.5.42",
+    "vue-i18n": "^11.4.12",
+    "vuedraggable": "^4.1.0"
   },
   "devDependencies": {
     "@vitejs/plugin-vue": "^6.0.8",
