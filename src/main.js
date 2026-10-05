@@ -2,20 +2,15 @@ import App from './App.vue'
 import { createApp } from 'vue'
 import { createI18n } from 'vue-i18n'
 
+import en from './components/language/en.json'
+import fr from './components/language/fr.json'
+
 const i18n = createI18n({
-  locale: 'ja',
+  locale: 'fr',
   fallbackLocale: 'en',
   messages: {
-    en: {
-      message: {
-        hello: 'hello world'
-      }
-    },
-    ja: {
-      message: {
-        hello: 'こんにちは、世界'
-      }
-    }
+    en,
+    fr
   }
 })  
 

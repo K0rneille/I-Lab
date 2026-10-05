@@ -1,0 +1,58 @@
+{
+        "landing": {
+                "title" : "Desktop Dump Archive 2020 → in progress",
+                "nav" : [
+                        "C:/desktop",
+                        "Desktop Dump Archive",
+                        "Molly Soda",
+                        "other works",
+                        "Net.art"
+                ],
+                "qr":"mobile format"
+
+        },
+
+        "work": {
+                "title" : "Desktop Dump Archive",
+                "txt" : [
+                        "the intimacy of a computer",
+                        "No one knows what's on your computer; all those files you consider private are probably jumbled together in a messy folder.",
+                        "Since 2020, she has occasionally posted images of her desk online, offering us a glimpse into her digital private life. Consumer culture and the image of women are prominent themes in this body of work, which, despite its simplicity, tells the story of a lifetime."
+        ]
+                
+        },
+
+        "Author": {
+                "title" : "Molly Soda",
+                "txt" : [
+                        "Molly Soda, multidisciplinary artist",
+                        "Molly Soda, whose real name is “Amalia Soto,” is a New Yorker who was born in San Juan, Puerto Rico, in 1989.",
+                        "She draws inspiration from her experience with web culture to create a wide variety of works, including photography, performances, installations, and websites—to name just a few."                        
+                ]       
+        },
+        "otherWorks": {
+                "title" : "+ works",
+                "txt" : [
+                        "Molly Soda's legacy",
+                        "She likes to use things that are generally considered private, shameful, undesirable, or trivial. Presenting archival material of herself and performing “mundane” situations is a recurring feature of her art.",
+                        "In her creative process, Molly Soda draws a great deal of inspiration from her experiences on the internet and social media."                        
+                ]       
+        },
+        "artisticMovement": {
+                "title" : "Net Art",
+                "txt" : [
+                        "Internet Art",
+                        "Internet art is a form of new media art distributed via the Internet that bypasses the traditional dominance of galleries and museums.",
+                        "It is often interactive, participatory, and multimedia-based. It can be used to convey a political or social message. It does not refer to art that has simply been digitized and posted online: the work is intrinsically dependent on the network."                        
+                ]       
+        },
+        "experience": {
+        "title" : "C:/desktop",
+        "txt" : [
+                "Slide the stickers onto the page"                  
+        ]       
+}
+}
+
+
+

@@ -1,0 +1,58 @@
+{
+        "landing": {
+                "title" : "Desktop Dump Archive 2020 – in uitvoering",
+                "nav" : [
+                        "C:/desktop",
+                        "Desktop Dump Archive",
+                        "Molly Soda",
+                        "Andere werken",
+                        "Net.art"
+                ],
+                "qr":"Format mobile"
+
+        },
+
+        "work": {
+                "title" : "Desktop Dump Archive",
+                "txt" : [
+                        "De privacy van een computer",
+                        "Niemand weet wat er op je computer staat; al die bestanden die je als privé beschouwt, zitten waarschijnlijk door elkaar in een rommelige map.",
+                        "Sinds 2020 plaatst ze af en toe foto’s van haar bureau online om ons een kijkje te geven in haar digitale privéleven. De consumptiemaatschappij en het beeld van de vrouw zijn thema’s die sterk naar voren komen in dit werk, dat ondanks zijn eenvoud het verhaal van een leven vertelt."
+        ]
+                
+        },
+
+        "Author": {
+                "title" : "Molly Soda",
+                "txt" : [
+                        "Molly Soda, multidisciplinair",
+                        "Molly Soda, wiens echte naam “Amalia Soto” is, is een New-Yorkaise die in 1989 in San Juan, Puerto Rico, werd geboren.",
+                        "Ze laat zich inspireren door haar ervaring met de internetcultuur om een grote verscheidenheid aan werken te creëren, zoals fotografie, performances, installaties en websites – om er maar een paar te noemen."                        
+                ]       
+        },
+        "otherWorks": {
+                "title" : "+ Werken",
+                "txt" : [
+                        "De voetafdruk van Molly Soda",
+                        "Ze maakt graag gebruik van zaken die doorgaans als privé, beschamend, ongewenst of triviaal worden beschouwd. Het tonen van archiefmateriaal over zichzelf en het naspelen van ‘alledaagse’ situaties is een terugkerend kenmerk van haar kunst.",
+                        "In haar creatieve proces haalt Molly Soda veel inspiratie uit haar ervaringen op het internet en sociale media."                        
+                ]       
+        },
+        "artisticMovement": {
+                "title" : "Net Art",
+                "txt" : [
+                        "Internetkunst",
+                        "Internetkunst is een vorm van nieuwe-mediakunst die via het internet wordt verspreid en daarmee de traditionele dominantie van galeries en musea omzeilt.",
+                        "Het is vaak interactief, participatief en multimediaal. Het kan worden gebruikt om een politieke of maatschappelijke boodschap over te brengen. Het verwijst niet naar kunst die louter is gedigitaliseerd en online is gezet: het werk is intrinsiek afhankelijk van het netwerk."                        
+                ]       
+        },
+        "experience": {
+        "title" : "C:/desktop",
+        "txt" : [
+                "Plak de stickers op de pagina’s"                  
+        ]       
+}
+}
+
+
+
