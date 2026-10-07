@@ -1,5 +1,5 @@
 <template>
-  <h1>{{ $t('page1') }}</h1>
+  <h1>{{ $t("work.txt[0]") }}</h1>
 
 </template>
 
