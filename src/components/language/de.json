@@ -1,13 +1,14 @@
 {
         "landing": {
-                "title" : "Desktop Dump Archive 2020 – en cours",
-                "txt" : "von Molly Soda",
+                "title" : "Desktop Dump Archive",
+                "subtitle" : "2020 – in Arbeit",
+                "txt" : "Molly Soda",
                 "nav" : [
                         "Desktop Dump Archive",
                         "Molly Soda",
                         "Net.art",
                         "C:/desktop",
-                        "Weitere Werke"
+                        "+ Werke"
                 ],
                 "qr":"Format für Mobilgeräte"
 
@@ -18,7 +19,8 @@
                 "txt" : [
                         "Die Privatsphäre eines Computers",
                         "Niemand weiß, was sich auf Ihrem Computer befindet – all diese als privat geltenden Dateien liegen wahrscheinlich durcheinander in einem unordentlichen Ordner.",
-                        "Seit 2020 veröffentlicht sie gelegentlich Einblicke in ihren Schreibtisch online, um uns einen Einblick in ihre digitale Privatsphäre zu gewähren. Die Konsumgesellschaft und das Frauenbild sind Themen, die in diesem Werk eine große Rolle spielen, das trotz seiner Einfachheit die Geschichte eines Lebens erzählt."
+                        "Seit 2020 veröffentlicht sie gelegentlich den Inhalt ihres Desktops online, um uns einen Einblick in ihre digitale Privatsphäre zu gewähren.",
+                        "Sie lässt sich von ihren Erfahrungen mit der Webkultur inspirieren, um eine große Vielfalt an Werken zu schaffen, darunter Fotografie, Performances, Installationen und Websites, um nur einige zu nennen."
         ]
                 
         },
