@@ -10,8 +10,13 @@
     </section>  
     <h2>{{ $t('Author.txt[0]') }}</h2>
     <p>{{ $t('Author.txt[1]') }}</p>
+    
     <img src="../components/img/mollysoda.webp" alt="">
+    
     <p>{{ $t('Author.txt[2]') }}</p>
+    
     <img src="../components/img/mollysoda1.webp" alt="">
+
+    <router-link class="link--txt" to="/netart" aria-label="Vers la page Net.art">{{ $t('landing.nav[2]') }}</router-link>
   </main>
 </template>

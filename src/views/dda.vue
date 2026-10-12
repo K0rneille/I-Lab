@@ -2,7 +2,7 @@
   <main>
     <section class="header">
         <nav>
-            <router-link to="/" aria-label="Retour à la page d’accueil">
+            <router-link class="link--btn" to="/" aria-label="Retour à la page d’accueil">
               <img class="icon" src="../components/icons/arrow-left-s-line.svg" alt="">
             </router-link>
         </nav>
@@ -19,5 +19,7 @@
     <img src="../components/img/desktop.webp" alt="">
     
     <p>{{ $t('work.txt[3]') }}</p>
+
+    <router-link class="link--txt" to="/mollysoda" aria-label="Vers la page de Molly Soda">{{ $t('landing.nav[1]') }}</router-link>
   </main>
 </template>

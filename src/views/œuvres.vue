@@ -20,5 +20,7 @@
     <img src="../components/img/dancing.webp" alt="">
     <img src="../components/img/tomatolive.webp" alt="">
 
+    <router-link class="link--txt" to="/dda" aria-label="Vers la page Desktop Dump Archive">{{ $t('landing.nav[0]') }}</router-link>
+
   </main>
 </template>

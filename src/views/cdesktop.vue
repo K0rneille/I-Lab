@@ -9,5 +9,7 @@
         <h1>{{ $t('experience.title') }}</h1>
     </section>
     <h2>{{ $t('experience.txt[0]') }}</h2>
+
+    <router-link class="link--txt" to="/oeuvres" aria-label="Vers la page C:/desktop">{{ $t('landing.nav[4]') }}</router-link>
   </main>
 </template>

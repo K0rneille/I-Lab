@@ -20,5 +20,7 @@
     <img src="../components/img/netart1.webp" alt="">
     <span>Olia Lialina, “My Boyfriend Came Back from the War”, 1996</span>
 
+    <router-link class="link--txt" to="/cdesktop" aria-label="Vers la page C:/desktop">{{ $t('landing.nav[3]') }}</router-link>
+
   </main>
 </template>
