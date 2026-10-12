@@ -1,3 +1,7 @@
+<script setup>
+import page from '../components/page.vue'
+</script>
+
 <template>
     <h1>{{ $t("landing.title") }}</h1>
     <h2>{{ $t("landing.subtitle") }}</h2>
@@ -16,7 +20,3 @@
     <button>{{ $t('landing.qr') }}</button>
     <page />
 </template>
-
-<script setup>
-import page from '../components/page.vue'
-</script>

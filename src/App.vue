@@ -1,8 +1,3 @@
-<template>
-  <router-view />
-  <trad @change-lang="changeLang" />
-</template>
-
 <script setup >
   import trad from './components/trad.vue'
 
@@ -16,3 +11,8 @@
 
 
 </script>
+
+<template>
+  <router-view />
+  <trad @change-lang="changeLang" />
+</template>
