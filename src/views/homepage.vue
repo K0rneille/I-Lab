@@ -2,6 +2,7 @@
     <h1>{{ $t("landing.title") }}</h1>
     <h2>{{ $t("landing.subtitle") }}</h2>
     <h3>{{ $t("landing.txt") }}</h3>
+    
     <nav aria-label="Pages">
         <ul>
         <li><router-link to="/dda">{{ $t('landing.nav[0]') }}</router-link></li>
@@ -11,6 +12,8 @@
         <li><router-link to="/oeuvres">{{ $t('landing.nav[4]') }}</router-link></li>
         </ul>
     </nav>
+
+    <button>{{ $t('landing.qr') }}</button>
     <page />
 </template>
 
