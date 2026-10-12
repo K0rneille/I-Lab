@@ -9,5 +9,7 @@
         <h1>{{ $t('experience.title') }}</h1>
     </section>
     <h2>{{ $t('experience.txt[0]') }}</h2>
+    <p>{{ $t('experience.txt[1]') }}</p>
+    <p>{{ $t('experience.txt[2]') }}</p>
   </main>
 </template>
