@@ -3,11 +3,11 @@
                 "title" : "Desktop Dump Archive 2020 – in uitvoering",
                 "txt" : "door Molly Soda",
                 "nav" : [
-                        "C:/desktop",
                         "Desktop Dump Archive",
                         "Molly Soda",
-                        "Andere werken",
-                        "Net.art"
+                        "Net.art",
+                        "C:/desktop",
+                        "Andere werken"
                 ],
                 "qr":"Format mobile"
 
@@ -54,6 +54,5 @@
         ]       
 }
 }
-
 
 

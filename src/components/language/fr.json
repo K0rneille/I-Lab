@@ -1,13 +1,14 @@
 {
         "landing": {
                 "title" : "Desktop Dump Archive 2020 – en cours",
+                "subtitle" : "2020 – en cours",
                 "txt" : "par Molly Soda",
                 "nav" : [
-                        "C:/desktop",
                         "Desktop Dump Archive",
                         "Molly Soda",
-                        "Autres œuvres",
-                        "Net.art"
+                        "Net.art",
+                        "C:/desktop",
+                        "+ D'œuvres"
                 ],
                 "qr":"Format mobile"
 
@@ -18,7 +19,8 @@
                 "txt" : [
                         "L’intimité d’un ordinateur",
                         "Personne ne sait ce qu’il y a sur votre ordinateur, tout ces fichiers considérés comme privés s’emmêlent probablement dans un dossier mal rangé.",
-                        "Depuis 2020 elle poste ponctuellement le contenu de son bureau  en ligne afin de nous laisser apercevoir son intimité numérique. Société de consommation ou image de la femme sont des sujet très présent dans cette œuvre qui, malgré sa simplicité, raconte l’histoire d’une vie."
+                        "Depuis 2020 elle poste ponctuellement le contenu de son bureau  en ligne afin de nous laisser apercevoir son intimité numérique.",
+                        "Elle s’inspire de son expérience de la culture web afin de  produire  une grande diversité d’œuvres telles que la photographie, des performances, des installations et des sites internet pour ne pas tous les citer."
         ]
                 
         },
@@ -35,8 +37,8 @@
                 "title" : "+ Œuvres",
                 "txt" : [
                         "L’empreinte de Molly Soda",
-                        "She likes to use things that are generally considered private, shameful, undesirable, or trivial. Presenting archival material of herself and performing “mundane” situations is a recurring feature of her art.",
-                        "In her creative process, Molly Soda draws a great deal of inspiration from her experiences on the internet and social media."                        
+                        "Dans son processus créatif, Molly Soda s’inspire énormément de son expérience sur internet et les réseaux sociaux.",                        
+                        "Elle aime utiliser ce qui est généralement considéré comme privé, honteux, indésirable ou futile. Présenter des archives d’elle et performer des situations « banales » est une caractéristiques récurrente dans son Art."
                 ]       
         },
         "artisticMovement": {
@@ -54,6 +56,3 @@
         ]       
 }
 }
-
-
-
