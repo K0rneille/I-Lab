@@ -1,24 +1,22 @@
 <template>
-
-  <form class="form">
-    <select name="lang" id="lang" class="form__select">
-      <option value="fr" class="form__option">français</option>
-      <option value="en" class="form__option">english</option>
-      <option value="nl" class="form__option">ne</option>
-      <option value="de" class="form__option">deutsch</option>
+  <label class="language-picker">
+    <span class="language-picker__icon" aria-hidden="true">文A</span>
+    <select aria-label="Choisir la langue" :value="locale" @change="changeLanguage">
+      <option value="fr">Français</option>
+      <option value="en">English</option>
+      <option value="nl">Nederlands</option>
+      <option value="de">Deutsch</option>
     </select>
-
-
-
-  </form>
-  <button class="changeLang" @click="$emit('changeLang', 'fr')">français</button>
-  <button class="changeLang" @click="$emit('changeLang', 'en')">english</button>
-  <button class="changeLang" @click="$emit('changeLang', 'nl')">neerlandais</button>
-  <button class="changeLang" @click="$emit('changeLang', 'de')">allemand</button>
+  </label>
 </template>
 
 <script setup >
+import { useI18n } from 'vue-i18n'
 
-defineEmits(['changeLang']);
+const emit = defineEmits(['changeLang'])
+const { locale } = useI18n()
 
+const changeLanguage = (event) => {
+  emit('changeLang', event.target.value)
+}
 </script>
