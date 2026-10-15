@@ -1,3 +1,9 @@
+<script setup >
+
+defineEmits(['changeLang']);
+
+</script>
+
 <template>
 
   <form class="form">
@@ -16,9 +22,3 @@
   <button class="changeLang" @click="$emit('changeLang', 'nl')">neerlandais</button>
   <button class="changeLang" @click="$emit('changeLang', 'de')">allemand</button>
 </template>
-
-<script setup >
-
-defineEmits(['changeLang']);
-
-</script>

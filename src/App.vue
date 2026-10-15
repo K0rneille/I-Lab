@@ -13,6 +13,8 @@
 </script>
 
 <template>
-  <router-view />
-  <trad @change-lang="changeLang" />
+  <main>
+    <router-view />
+    <trad @change-lang="changeLang" />
+  </main>
 </template>
