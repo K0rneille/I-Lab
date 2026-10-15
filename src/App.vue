@@ -11,6 +11,16 @@
 
 
 </script>
+<style lang="scss">
+$primary-color: #42b983;
+
+body {
+  background-color:$primary-color;
+  h1 {
+    color: $primary-color;
+  }
+}
+</style>
 
 <template>
   <router-view />
