@@ -1,12 +1,14 @@
 {
         "landing": {
-                "title" : "Desktop Dump Archive 2020 → in progress",
+                "title" : "Desktop Dump Archive",
+                "subtitle" : "2020 – in progress",
+                "txt" : "Molly Soda",
                 "nav" : [
-                        "C:/desktop",
                         "Desktop Dump Archive",
                         "Molly Soda",
-                        "other works",
-                        "Net.art"
+                        "Net.art",
+                        "C:/desktop",
+                        "+ Works"
                 ],
                 "qr":"mobile format"
 
@@ -17,7 +19,8 @@
                 "txt" : [
                         "the intimacy of a computer",
                         "No one knows what's on your computer; all those files you consider private are probably jumbled together in a messy folder.",
-                        "Since 2020, she has occasionally posted images of her desk online, offering us a glimpse into her digital private life. Consumer culture and the image of women are prominent themes in this body of work, which, despite its simplicity, tells the story of a lifetime."
+                        "Since 2020, she has occasionally posted the contents of her desktop online to give us a glimpse into her digital private life",
+                        "She draws inspiration from her experience of web culture to produce a wide variety of works, including photography, performances, installations and websites, to name but a few."
         ]
                 
         },

@@ -1,12 +1,14 @@
 {
         "landing": {
-                "title" : "Desktop Dump Archive 2020 – in uitvoering",
+                "title" : "Desktop Dump Archive",
+                "subtitle" : "2020 – in uitvoering",
+                "txt" : "Molly Soda",
                 "nav" : [
-                        "C:/desktop",
                         "Desktop Dump Archive",
                         "Molly Soda",
-                        "Andere werken",
-                        "Net.art"
+                        "Net.art",
+                        "C:/desktop",
+                        "+ Werken"
                 ],
                 "qr":"Format mobile"
 
@@ -17,7 +19,8 @@
                 "txt" : [
                         "De privacy van een computer",
                         "Niemand weet wat er op je computer staat; al die bestanden die je als privé beschouwt, zitten waarschijnlijk door elkaar in een rommelige map.",
-                        "Sinds 2020 plaatst ze af en toe foto’s van haar bureau online om ons een kijkje te geven in haar digitale privéleven. De consumptiemaatschappij en het beeld van de vrouw zijn thema’s die sterk naar voren komen in dit werk, dat ondanks zijn eenvoud het verhaal van een leven vertelt."
+                        "Sinds 2020 plaatst ze af en toe de inhoud van haar bureaublad  online om ons een kijkje te geven in haar digitale privacy.",
+                        "Ze laat zich inspireren door haar ervaringen met de webcultuur om  een grote verscheidenheid aan werken te produceren, zoals fotografie, performances, installaties en websites, om er maar een paar te noemen."
         ]
                 
         },
@@ -53,6 +56,5 @@
         ]       
 }
 }
-
 
 
