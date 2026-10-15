@@ -57,7 +57,6 @@ section{
 }
 
 .right-txt{
-  display: grid;
   grid-column: 1 / 3;
   grid-row: 1 / 2;
   text-align: right;
@@ -72,13 +71,12 @@ section{
   justify-self: start;
   max-width: 280px;
   align-self: end;
-  margin-bottom: 10px;
+  margin-bottom: 26px;
 }
 
 .left-txt{
   grid-column: 3 / 5;
   grid-row: 2 / 3;
-  top: 0;
 }
 
 </style>

@@ -39,6 +39,7 @@ h1{
   font-weight: light;
   line-height: 0;
   letter-spacing: -3px;
+  color: $primary-color;
 }
 
 h2{
@@ -50,11 +51,13 @@ h2{
 
 .small-txt{
   font-size: $small-txt;
+  line-height: 1.2;
 }
 
 p{
   font-size: $txt;
   margin: 0;
+  line-height: 1.4;
 }
 
 .nav{
@@ -64,6 +67,7 @@ p{
   text-decoration: underline;
   font-weight: bold;
   justify-content: flex-end;
+  font-family: $primary-font;
 }
 
 header{
