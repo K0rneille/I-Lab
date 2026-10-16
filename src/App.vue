@@ -18,7 +18,7 @@
 
 
 <style lang="scss">
-@import './app.scss';
+@import 'app.scss';
 
 main{
   background-color: $bg-color;
@@ -47,6 +47,7 @@ h2{
   color: $alt-color;
   font-size: $subtitle;
   line-height: 0;
+  margin: 20px 0 40px 0;
 }
 
 .small-txt{
@@ -74,6 +75,49 @@ header{
   display: flex;
   align-items: center;
   gap: 10px;
+}
+
+section{
+  display: grid;
+}
+
+// h1::before{
+//   content: "";
+//   display: inline-block; 
+//   height: 74px;
+//   width: 74px;
+//   background-image: url('/src/components/icons/arrow-left-s-line.svg');
+//   background-repeat: no-repeat;
+//   background-position: center;
+//   background-size: contain;
+//   background-color: $primary-color;
+//   padding: 10px;
+// }
+
+@media screen and (max-width: 1100px){
+  h1{
+    font-size: $mobile-title;
+    line-height: 1;
+  }
+
+  h2{
+    font-size: $mobile-subtitle;
+    line-height: 1;
+    margin: 0;
+  }
+
+  section{
+    display: block;
+  }
+  
+  main{
+    margin: 10px;
+  }
+
+  .back{
+    width: 48px;
+    height: 48px;
+  }
 }
 
 </style>

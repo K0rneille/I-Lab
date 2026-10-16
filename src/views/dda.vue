@@ -32,6 +32,13 @@
 <style lang="scss" scoped>
 @import '../app.scss';
 
+section{
+  grid-template-columns: auto auto 194px auto;
+  grid-template-rows: auto auto;
+  justify-content: center;
+  gap: 20px;
+}
+
 .small-img{
   width: 194px;
   height: auto;
@@ -46,14 +53,6 @@
   grid-column: 1 / 3;
   grid-row: 2 / 3;
   justify-self: end;
-}
-
-section{
-  display: grid;
-  grid-template-columns: auto auto 194px auto;
-  grid-template-rows: auto auto;
-  justify-content: center;
-  gap: 20px;
 }
 
 .right-txt{
@@ -77,6 +76,29 @@ section{
 .left-txt{
   grid-column: 3 / 5;
   grid-row: 2 / 3;
+}
+
+@media screen and (max-width: 1100px){
+  .right-txt{
+    font-size: $mobile-txt;
+    text-align: left;
+    line-height: 1.6;
+  }
+
+  .left-txt{
+    font-size: $mobile-txt;
+    line-height: 1.6;
+  }
+
+  .small-txt{
+    font-size: $mobile-small-txt;
+    line-height: 1.8;
+  }
+
+  .big-img{
+    width: 100%;
+    height: auto;
+  }
 }
 
 </style>

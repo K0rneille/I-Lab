@@ -50,7 +50,7 @@ h3{
 }
 
 ul{
-position: absolute;
+    position: absolute;
     bottom: 20px;
     right: 20px;
     display: flex;

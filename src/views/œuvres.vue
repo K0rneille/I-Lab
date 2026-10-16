@@ -42,7 +42,6 @@
 @import '../app.scss';
 
 section{
-  display: grid;
   grid-template-columns: 275px 200px 360px 250px;
   grid-template-rows: 170px 280px;
   justify-content: space-between;

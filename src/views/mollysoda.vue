@@ -50,7 +50,6 @@
 }
 
 section {
-  display: grid;
   grid-template-columns: auto auto 170px auto;
   grid-template-rows: auto auto;
   justify-content: center;
