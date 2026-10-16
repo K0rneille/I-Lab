@@ -69,6 +69,10 @@ p{
   font-family: $primary-font;
 }
 
+.nav:active{
+  color: #FF0000;
+}
+
 header{
   display: flex;
   align-items: center;
