@@ -1,7 +1,6 @@
 <script setup >
   import trad from './components/trad.vue'
   import { useI18n } from 'vue-i18n'
-
   const { locale } = useI18n()
 
   const changeLang = (param)=>{
@@ -18,8 +17,7 @@
 
 
 <style lang="scss">
-@import 'app.scss';
-
+@use './app.scss' as *;
 main{
   background-color: $bg-color;
   color: $primary-color;
@@ -80,19 +78,6 @@ header{
 section{
   display: grid;
 }
-
-// h1::before{
-//   content: "";
-//   display: inline-block; 
-//   height: 74px;
-//   width: 74px;
-//   background-image: url('/src/components/icons/arrow-left-s-line.svg');
-//   background-repeat: no-repeat;
-//   background-position: center;
-//   background-size: contain;
-//   background-color: $primary-color;
-//   padding: 10px;
-// }
 
 @media screen and (max-width: 1100px){
   h1{

@@ -10,6 +10,12 @@ import page from '../components/page.vue'
     </h1>
     <h2>{{ $t("landing.subtitle") }}</h2>
     <h3>{{ $t("landing.txt") }}</h3>
+
+    <div class="sponsor">
+        <img class="sponsor-img" src="../components/img/designmuseumbrussels.webp" alt="">
+        <img class="sponsor-img" src="../components/img/designmuseumbrussels.webp" alt="">
+        <img class="sponsor-img" src="../components/img/designmuseumbrussels.webp" alt="">
+    </div>
     
     <nav aria-label="Pages">
         <ul>
@@ -22,11 +28,10 @@ import page from '../components/page.vue'
     </nav>
 
     <button>{{ $t('landing.qr') }}</button>
-    <page />
 </template>
 
 <style lang="scss" scoped>
-@import '../app.scss';
+@use '../app.scss' as *;
 
 h1{
     margin: 20px;
@@ -58,5 +63,37 @@ ul{
     list-style: none;
     gap: 48px;
     align-items: flex-end;
+}
+
+.sponsor-img{
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    width: 111px;
+    height: auto;
+}
+
+button{
+    position: absolute;
+    width: 285px;
+    bottom: 120px;
+    left: 20px;
+    background-color: $bg-color;
+    color: $primary-color;
+    font-family: $primary-font;
+    font-size: $txt;
+    font-weight: bold;
+    border: solid 3px $primary-color;
+    padding: 8px 16px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+        &:before{
+          content: url(../components/icons/qr-code-line.svg);
+          display: inline-block;
+          height: 54px;
+          width: 54px;
+
+      }
 }
 </style>

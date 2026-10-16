@@ -30,7 +30,7 @@
 </template>
 
 <style lang="scss" scoped>
-@import '../app.scss';
+@use '../app.scss' as *;
 
 section{
   grid-template-columns: auto auto 194px auto;
@@ -70,12 +70,18 @@ section{
   justify-self: start;
   max-width: 280px;
   align-self: end;
-  margin-bottom: 26px;
+  margin-bottom: 28px;
 }
 
 .left-txt{
   grid-column: 3 / 5;
   grid-row: 2 / 3;
+}
+
+.nav{
+  position: absolute;
+  bottom: 20px;
+  right: 20px;
 }
 
 @media screen and (max-width: 1100px){

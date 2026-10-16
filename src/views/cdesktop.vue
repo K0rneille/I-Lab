@@ -11,3 +11,12 @@
     <h2>{{ $t('experience.txt[0]') }}</h2>
   </main>
 </template>
+
+<style lang="scss" scoped>
+.nav{
+  position: absolute;
+  bottom: 20px;
+  right: 20px;
+}
+
+</style>

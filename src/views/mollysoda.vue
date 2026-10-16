@@ -29,7 +29,7 @@
 </template>
 
 <style lang="scss" scoped>
-@import '../app.scss';
+@use '../app.scss' as *;
 
 .small-img {
   width: 170px;
@@ -72,5 +72,11 @@ section {
   grid-row: 2 / 3;
   margin-top: 0;
   max-width: 480px;
+}
+
+.nav{
+  position: absolute;
+  bottom: 20px;
+  right: 20px;
 }
 </style>

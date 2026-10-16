@@ -39,10 +39,10 @@
 </template>
 
 <style lang="scss" scoped>
-@import '../app.scss';
+@use '../app.scss' as *;
 
 section{
-  grid-template-columns: 275px 200px 360px 250px;
+  grid-template-columns: auto auto auto auto;
   grid-template-rows: 170px 280px;
   justify-content: space-between;
   gap: 20px;
@@ -66,15 +66,16 @@ section{
   grid-column: 3 / 5;
   grid-row: 1 / 2;
   align-self: start;
-  max-width: 550px;
+  max-width: 275px;
+  font-size: $small-txt;
 }
 
 .left-txt{
   grid-column: 1 / 3;
   grid-row: 2 / 3;
-  max-width: 430px;
+  max-width: 490px;
   text-align: right;
-  align-self: start;
+  justify-self: end;
 }
 
 .dancing-img{
@@ -89,5 +90,11 @@ section{
   height: auto;
   grid-column: 4 / 5;
   grid-row: 2 / 3;
+}
+
+.nav{
+  position: absolute;
+  bottom: 20px;
+  right: 20px;
 }
 </style>
