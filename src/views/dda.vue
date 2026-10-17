@@ -30,7 +30,14 @@
 </template>
 
 <style lang="scss" scoped>
-@import '../app.scss';
+@use '../app.scss' as *;
+
+section{
+  grid-template-columns: auto auto 194px auto;
+  grid-template-rows: auto auto;
+  justify-content: center;
+  gap: 20px;
+}
 
 .small-img{
   width: 194px;
@@ -48,14 +55,6 @@
   justify-self: end;
 }
 
-section{
-  display: grid;
-  grid-template-columns: auto auto 194px auto;
-  grid-template-rows: auto auto;
-  justify-content: center;
-  gap: 20px;
-}
-
 .right-txt{
   grid-column: 1 / 3;
   grid-row: 1 / 2;
@@ -71,12 +70,41 @@ section{
   justify-self: start;
   max-width: 280px;
   align-self: end;
-  margin-bottom: 26px;
+  margin-bottom: 28px;
 }
 
 .left-txt{
   grid-column: 3 / 5;
   grid-row: 2 / 3;
+}
+
+.nav{
+  position: absolute;
+  bottom: 20px;
+  right: 20px;
+}
+
+@media screen and (max-width: 1100px){
+  .right-txt{
+    font-size: $mobile-txt;
+    text-align: left;
+    line-height: 1.6;
+  }
+
+  .left-txt{
+    font-size: $mobile-txt;
+    line-height: 1.6;
+  }
+
+  .small-txt{
+    font-size: $mobile-small-txt;
+    line-height: 1.8;
+  }
+
+  .big-img{
+    width: 100%;
+    height: auto;
+  }
 }
 
 </style>

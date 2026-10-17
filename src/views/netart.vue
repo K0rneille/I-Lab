@@ -31,7 +31,7 @@
 </template>
 
 <style lang="scss" scoped>
-@import '../app.scss';
+@use '../app.scss' as *;
 
 .ascii-img {
   width: 370px;
@@ -72,7 +72,6 @@
 }
 
 section {
-  display: grid;
   grid-template-columns: auto auto auto auto;
   grid-template-rows: auto auto;
   gap: 20px;
@@ -97,5 +96,11 @@ section {
   margin-top: 0;
   margin-bottom: 0;
   max-width: 800px;
+}
+
+.nav{
+  position: absolute;
+  bottom: 20px;
+  right: 20px;
 }
 </style>

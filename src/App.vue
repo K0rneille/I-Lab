@@ -1,7 +1,6 @@
 <script setup >
   import trad from './components/trad.vue'
   import { useI18n } from 'vue-i18n'
-
   const { locale } = useI18n()
 
   const changeLang = (param)=>{
@@ -18,8 +17,7 @@
 
 
 <style lang="scss">
-@import './app.scss';
-
+@use './app.scss' as *;
 main{
   background-color: $bg-color;
   color: $primary-color;
@@ -47,6 +45,7 @@ h2{
   color: $alt-color;
   font-size: $subtitle;
   line-height: 0;
+  margin: 20px 0 40px 0;
 }
 
 .small-txt{
@@ -70,10 +69,44 @@ p{
   font-family: $primary-font;
 }
 
+.nav:active{
+  color: #FF0000;
+}
+
 header{
   display: flex;
   align-items: center;
   gap: 10px;
+}
+
+section{
+  display: grid;
+}
+
+@media screen and (max-width: 1100px){
+  h1{
+    font-size: $mobile-title;
+    line-height: 1;
+  }
+
+  h2{
+    font-size: $mobile-subtitle;
+    line-height: 1;
+    margin: 0;
+  }
+
+  section{
+    display: block;
+  }
+  
+  main{
+    margin: 10px;
+  }
+
+  .back{
+    width: 48px;
+    height: 48px;
+  }
 }
 
 </style>
