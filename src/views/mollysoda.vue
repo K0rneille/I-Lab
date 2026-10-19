@@ -50,7 +50,7 @@
 }
 
 section {
-  grid-template-columns: auto auto 170px auto;
+  grid-template-columns: repeat(4, 1fr);
   grid-template-rows: auto auto;
   justify-content: center;
   gap: 20px;

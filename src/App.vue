@@ -29,9 +29,7 @@
         maxi = 90 ;
     }
 
-    console.log(s)
-
-      if (s >= maxi) {
+    if (s >= maxi) {
         reset()
         allerAlaccueil()
       }
@@ -75,6 +73,11 @@ main{
   color: $primary-color;
   font-family: $primary-font;
   margin: 20px;
+  height: calc(100vh - 40px);
+  height: calc(100dvh - 40px);
+  box-sizing: border-box;
+  display: grid;
+  grid-template-rows: auto auto minmax(0, 1fr);
 }
 
 .back{
@@ -133,6 +136,7 @@ header{
 
 section{
   display: grid;
+  min-height: 0;
 }
 
 @media screen and (max-width: 1100px){

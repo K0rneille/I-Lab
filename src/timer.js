@@ -1,6 +1,3 @@
-" use strict"
-
-
 export function createtimer ( onTick, interval = 1000) {
 
     let id = null ;

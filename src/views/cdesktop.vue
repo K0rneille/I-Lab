@@ -386,8 +386,6 @@ const submitEmail = () => {
 @use '../app.scss' as *;
 
 .cdesktop {
-  width: 1154px;
-  height: 794px;
   overflow: hidden;
   position: relative;
   box-sizing: border-box;;
@@ -395,14 +393,15 @@ const submitEmail = () => {
 
 .editor {
   display: grid;
-  grid-template-columns: 861px 273px;
+  grid-template-columns: auto 273px;
+  grid-template-rows: auto;
   gap: 20px;
-  height: 517px;
+  height: calc(100% - 96px);
 }
 
 .window {
   width: 100%;
-  height: 497px;
+  height: 700px;
   border: 6px solid $link-color;
   box-sizing: border-box;
   position: relative;

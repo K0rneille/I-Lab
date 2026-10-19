@@ -72,7 +72,7 @@
 }
 
 section {
-  grid-template-columns: auto auto auto auto;
+  grid-template-columns: repeat(4, 1fr);
   grid-template-rows: auto auto;
   gap: 20px;
 }

@@ -42,9 +42,9 @@
 @use '../app.scss' as *;
 
 section{
-  grid-template-columns: auto auto auto auto;
-  grid-template-rows: 170px 280px;
-  justify-content: space-between;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: auto auto;
+  justify-content: center;
   gap: 20px;
 }
 
@@ -53,19 +53,24 @@ section{
   height: auto;
   grid-column: 1 / 2;
   grid-row: 1 / 2;
+  align-self: end;
+  justify-self: end;
 }
 
 .folder-img{
-  width: 200px;
+  width: 400px;
   height: auto;
   grid-column: 2 / 3;
   grid-row: 1 / 2;
+  align-self: end;
+  justify-self: end;
 }
 
 .top-txt{
   grid-column: 3 / 5;
   grid-row: 1 / 2;
-  align-self: start;
+  align-self: end;
+  justify-self: start;
   max-width: 275px;
   font-size: $small-txt;
 }
@@ -86,7 +91,7 @@ section{
 }
 
 .tomato-img{
-  width: 250px;
+  width: 100%;
   height: auto;
   grid-column: 4 / 5;
   grid-row: 2 / 3;

@@ -1,26 +1,13 @@
 <script setup>
-import { ref } from 'vue';
-console.clear()
+import designMuseumBrussels from './img/sponsors/designmuseumbrussels.webp'
+import tumblr from './img/sponsors/tumblr.webp'
+import visitWallonia from './img/sponsors/visitwallonia.webp'
 
-const sponsors = ref( [
-
-     {
-        "name" : "designmuseumbrussels",
-        "img" : "src/components/img/sponsors/designmuseumbrussels.webp"
-    },
-
-     {
-        "name" : "tumblr",
-        "img" : "src/components/img/sponsors/tumblr.webp"
-    },
-
-     {
-        "name" : "visitwallonia",
-        "img" : "src/components/img/sponsors/visitwallonia.webp"
-    }
-
-
-])
+const sponsors = [
+    { name: 'designmuseumbrussels', img: designMuseumBrussels },
+    { name: 'tumblr', img: tumblr },
+    { name: 'visitwallonia', img: visitWallonia },
+]
 
 </script>
 
@@ -33,7 +20,7 @@ const sponsors = ref( [
 <div class="wrapper sponsor">
     <div class="groupe">
         <div
-        v-for="(item, i) in sponsors"
+        v-for="item in sponsors"
         :key="item.name"
         :item = item
 
@@ -52,7 +39,8 @@ const sponsors = ref( [
 
         <div aria-hidden class="groupe">
         <div
-        v-for="(item, i) in sponsors"
+        v-for="item in sponsors"
+        :key="item.name"
         :item = item
         :name = item.name
         :imgsrc = item.img     
