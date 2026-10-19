@@ -1,5 +1,16 @@
+<script setup>
+import { useI18n } from 'vue-i18n'
+import trad from '../components/trad.vue'
+
+const { locale } = useI18n()
+
+const changeLang = (code) => {
+  locale.value = code
+}
+</script>
+
 <template>
-  <main>
+  <main class="dda-page">
     <header>
       <router-link to="/" aria-label="Retour à la page d’accueil">
         <img class="back" src="../components/icons/arrow-left-s-line.svg" alt="">
@@ -25,7 +36,10 @@
       <p class="left-txt">{{ $t('work.txt[3]') }}</p>
     </section>
 
-    <router-link class="nav" to="/mollysoda">Molly Soda</router-link>
+    <footer class="dda-controls">
+      <trad :inline="true" @change-lang="changeLang" />
+      <router-link class="nav" to="/mollysoda">Molly Soda</router-link>
+    </footer>
   </main>
 </template>
 
@@ -85,10 +99,26 @@ section{
 }
 
 @media screen and (max-width: 1100px){
+  main{
+    display: flex;
+    flex-direction: column;
+    height: auto;
+    min-height: calc(100dvh - 20px);
+  }
+
+  section{
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    padding-top: 20px;
+    flex: 1 0 auto;
+  }
+
   .right-txt{
     font-size: $mobile-txt;
     text-align: left;
     line-height: 1.6;
+    max-width: none;
   }
 
   .left-txt{
@@ -99,11 +129,33 @@ section{
   .small-txt{
     font-size: $mobile-small-txt;
     line-height: 1.8;
+    max-width: none;
+    margin: 0;
+  }
+
+  .small-img{
+    width: 194px;
+    max-width: 100%;
+    align-self: flex-start;
   }
 
   .big-img{
     width: 100%;
     height: auto;
+  }
+
+  .dda-controls{
+    display: flex;
+    flex-direction: row;
+    align-items: flex-end;
+    justify-content: space-between;
+    gap: 16px;
+    padding-top: 24px;
+  }
+
+  .nav{
+    position: static;
+    font-size: $mobile-txt;
   }
 }
 

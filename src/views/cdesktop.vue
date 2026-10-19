@@ -1,6 +1,14 @@
 <script setup>
 import { computed, onMounted, onBeforeUnmount, ref } from 'vue'
+import { useI18n } from 'vue-i18n'
 import initialCompositions from '../data/data.json'
+import trad from '../components/trad.vue'
+
+const { locale } = useI18n()
+
+const changeLang = (code) => {
+  locale.value = code
+}
 
 const stickerFiles = import.meta.glob(
   '../components/img/interaction/*.{gif,webp,png,jpg,jpeg}',
@@ -293,6 +301,8 @@ const submitEmail = () => {
 
     <h2>{{ $t('experience.txt[0]') }}</h2>
 
+    <p class="mobile-unavailable">{{ $t('experience.mobileUnavailable') }}</p>
+
     <section class="editor">
       <div class="window desktop-window">
         <h3><img src="../components/icons/file-image-line.svg" alt=""> desktop @ 100% (RGB)</h3>
@@ -361,7 +371,10 @@ const submitEmail = () => {
       </div>
     </section>
 
-    <router-link class="nav works-link" to="/oeuvres">{{ $t('otherWorks.title') }}</router-link>
+    <footer class="cdesktop-controls">
+      <trad :inline="true" @change-lang="changeLang" />
+      <router-link class="nav works-link" to="/oeuvres">{{ $t('otherWorks.title') }}</router-link>
+    </footer>
 
     <div v-if="isEmailPopupOpen" class="email-overlay" @click.self="closeEmailPopup">
       <form class="email-popup" @submit.prevent="submitEmail">
@@ -389,6 +402,14 @@ const submitEmail = () => {
   overflow: hidden;
   position: relative;
   box-sizing: border-box;;
+}
+
+.mobile-unavailable {
+  display: none;
+}
+
+.cdesktop-controls {
+  display: contents;
 }
 
 .editor {
@@ -564,6 +585,46 @@ const submitEmail = () => {
   position: absolute;
   right: 0;
   bottom: 0;
+}
+
+@media screen and (max-width: 1100px){
+  .cdesktop{
+    display: flex;
+    flex-direction: column;
+    height: auto;
+    min-height: calc(100vh - 20px);
+    min-height: calc(100dvh - 20px);
+    overflow: visible;
+  }
+
+  .cdesktop h2,
+  .editor{
+    display: none;
+  }
+
+  .mobile-unavailable{
+    display: grid;
+    flex: 1 0 auto;
+    place-items: center;
+    margin: 0;
+    padding: 24px;
+    text-align: center;
+    font-size: $mobile-txt;
+  }
+
+  .cdesktop-controls{
+    display: flex;
+    flex-direction: row;
+    align-items: flex-end;
+    justify-content: space-between;
+    gap: 16px;
+    padding-top: 24px;
+  }
+
+  .works-link{
+    position: static;
+    font-size: $mobile-txt;
+  }
 }
 
 .email-overlay {

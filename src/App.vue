@@ -62,7 +62,7 @@ timerMain()
 
 <template>
   <router-view />
-  <trad @change-lang="changeLang" />
+  <trad v-if="!['home', 'dda', 'mollysoda', 'netart', 'oeuvres', 'cdesktop'].includes(route.name)" @change-lang="changeLang" />
 </template>
 
 

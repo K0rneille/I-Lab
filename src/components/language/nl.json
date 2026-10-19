@@ -53,7 +53,8 @@
         "title" : "C:/desktop",
         "txt" : [
                 "Plak de stickers op de pagina’s"                  
-        ]
+        ],
+        "mobileUnavailable": "Deze ervaring is beschikbaar op iPad."
         },
         "mail": {
         "title" : "De compositie opslaan",
@@ -66,5 +67,4 @@
         ]
 }
 }
-
 

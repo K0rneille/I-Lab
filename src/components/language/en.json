@@ -34,7 +34,7 @@
                 ]       
         },
         "otherWorks": {
-                "title" : "+ works",
+                "title" : "+ Works",
                 "txt" : [
                         "Molly Soda's legacy",
                         "In her creative process, Molly Soda draws a great deal of inspiration from her experiences on the internet and social media."                        ,
@@ -53,7 +53,8 @@
         "title" : "C:/desktop",
         "txt" : [
                 "Slide the stickers onto the page"                  
-        ]
+        ],
+        "mobileUnavailable": "This experience is available on iPad."
         },       
         "mail": {
         "title" : "Save the composition",
@@ -66,6 +67,5 @@
         ]
 }
 }
-
 
 

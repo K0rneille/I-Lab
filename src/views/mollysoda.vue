@@ -1,5 +1,16 @@
+<script setup>
+import { useI18n } from 'vue-i18n'
+import trad from '../components/trad.vue'
+
+const { locale } = useI18n()
+
+const changeLang = (code) => {
+  locale.value = code
+}
+</script>
+
 <template>
-  <main>
+  <main class="mollysoda-page">
     <header>
       <router-link to="/" aria-label="Retour à la page d’accueil">
         <img class="back" src="../components/icons/arrow-left-s-line.svg" alt="">
@@ -16,15 +27,18 @@
         src="../components/img/mollysoda.webp"
         alt=""
       >
+      <p class="left-txt">{{ $t('Author.txt[2]') }}</p>
       <img
         class="big-img"
         src="../components/img/mollysoda1.webp"
         alt=""
       >
-      <p class="left-txt">{{ $t('Author.txt[2]') }}</p>
     </section>
 
-    <router-link class="nav" to="/netart">Net.art</router-link>
+    <footer class="mollysoda-controls">
+      <trad :inline="true" @change-lang="changeLang" />
+      <router-link class="nav" to="/netart">Net.art</router-link>
+    </footer>
   </main>
 </template>
 
@@ -78,5 +92,62 @@ section {
   position: absolute;
   bottom: 20px;
   right: 20px;
+}
+
+@media screen and (max-width: 1100px){
+  main{
+    display: flex;
+    flex-direction: column;
+    height: auto;
+    min-height: calc(100dvh - 20px);
+  }
+
+  section{
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    padding-top: 20px;
+    flex: 1 0 auto;
+  }
+
+  .small-txt{
+    font-size: $mobile-small-txt;
+    line-height: 1.8;
+    max-width: none;
+    text-align: left;
+  }
+
+  .small-img{
+    width: 194px;
+    max-width: 100%;
+    height: auto;
+    align-self: flex-start;
+  }
+
+  .left-txt{
+    font-size: $mobile-txt;
+    line-height: 1.4;
+    max-width: none;
+  }
+
+  .big-img{
+    width: 100%;
+    height: auto;
+    object-fit: contain;
+  }
+
+  .mollysoda-controls{
+    display: flex;
+    flex-direction: row;
+    align-items: flex-end;
+    justify-content: space-between;
+    gap: 16px;
+    padding-top: 24px;
+  }
+
+  .nav{
+    position: static;
+    font-size: $mobile-txt;
+  }
 }
 </style>

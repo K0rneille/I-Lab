@@ -1,11 +1,19 @@
 <script setup>
 import { ref } from 'vue'
+import { useI18n } from 'vue-i18n'
 import sponsors from '../components/sponsors.vue'
+import trad from '../components/trad.vue'
 
+const { locale } = useI18n()
 const isQrPopupOpen = ref(false)
+
+const changeLang = (code) => {
+  locale.value = code
+}
 </script>
 
 <template>
+  <main class="homepage">
     <h1>
         <span>Desktop</span>
         <span>Dump</span>
@@ -14,9 +22,9 @@ const isQrPopupOpen = ref(false)
     <h2>{{ $t("landing.subtitle") }}</h2>
     <h3>{{ $t("landing.txt") }}</h3>
 
-    <sponsors />
-    
-    <nav aria-label="Pages">
+    <sponsors class="landing-sponsors" />
+
+    <nav class="landing-nav" aria-label="Pages">
         <ul>
             <li><router-link class="nav" to="/dda">{{ $t('landing.nav[0]') }}</router-link></li>
             <li><router-link class="nav mollyPage" to="/mollysoda">{{ $t('landing.nav[1]') }}</router-link></li>
@@ -29,6 +37,10 @@ const isQrPopupOpen = ref(false)
     <button class="qr-button" type="button" @click="isQrPopupOpen = true">
         {{ $t('landing.qr') }}
     </button>
+
+    <footer class="landing-controls">
+        <trad :inline="true" @change-lang="changeLang" />
+    </footer>
 
     <div
         v-if="isQrPopupOpen"
@@ -53,10 +65,20 @@ const isQrPopupOpen = ref(false)
             <img src="../components/img/qrcode.svg" alt="QR code">
         </div>
     </div>
+  </main>
 </template>
 
 <style lang="scss" scoped>
 @use '../app.scss' as *;
+
+.homepage{
+    position: relative;
+    display: block;
+    height: 100vh;
+    height: 100dvh;
+    margin: 0;
+    overflow: hidden;
+}
 
 h1{
     margin: 20px;
@@ -79,7 +101,7 @@ h3{
     margin: 20px;
 }
 
-ul{
+.landing-nav ul{
     position: absolute;
     bottom: 20px;
     right: 20px;
@@ -90,12 +112,8 @@ ul{
     align-items: flex-end;
 }
 
-.sponsor-img{
-    position: absolute;
-    top: 20px;
-    right: 20px;
-    width: 111px;
-    height: auto;
+.landing-controls{
+    display: contents;
 }
 
 .qr-button{
@@ -113,14 +131,14 @@ ul{
     display: flex;
     justify-content: space-between;
     align-items: center;
-        &:before{
-          content: url(../components/icons/qr-code-line.svg);
-          display: inline-block;
-          height: 54px;
-          width: 54px;
-
-      }
     cursor: pointer;
+
+    &:before{
+        content: url(../components/icons/qr-code-line.svg);
+        display: inline-block;
+        height: 54px;
+        width: 54px;
+    }
 }
 
 .qr-overlay {
@@ -161,5 +179,71 @@ ul{
 .qr-popup__close img {
     width: 100%;
     height: 100%;
+}
+
+@media screen and (max-width: 1100px){
+    .homepage{
+        box-sizing: border-box;
+        width: 100%;
+        height: 100vh;
+        height: 100dvh;
+        min-height: 0;
+        margin: 0;
+        padding: 10px;
+        overflow: hidden;
+        display: flex;
+        flex-direction: column;
+    }
+
+    h1{
+        margin: 10px 0 16px;
+        font-size: 75px;
+        line-height: .9;
+    }
+
+    h2{
+        margin: 0;
+        font-size: 24px;
+        line-height: 1.4;
+    }
+
+    h3{
+        margin: 12px 0 0;
+        font-size: 50px;
+        line-height: 1.5;
+    }
+
+    .landing-nav{
+        display: flex;
+        flex: 1 0 auto;
+        flex-direction: column;
+        justify-content: center;
+    }
+
+    .landing-nav ul{
+        position: static;
+        display: flex;
+        flex-direction: column;
+        align-items: flex-end;
+        gap: 8px;
+        margin: 12px 0;
+        padding: 0;
+    }
+
+    .landing-nav .nav{
+        font-size: 24px;
+        line-height: 1.2;
+    }
+
+    .landing-sponsors,
+    .qr-button{
+        display: none;
+    }
+
+    .landing-controls{
+        display: flex;
+        justify-content: flex-start;
+        padding-top: 8px;
+    }
 }
 </style>

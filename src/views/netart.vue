@@ -1,5 +1,16 @@
+<script setup>
+import { useI18n } from 'vue-i18n'
+import trad from '../components/trad.vue'
+
+const { locale } = useI18n()
+
+const changeLang = (code) => {
+  locale.value = code
+}
+</script>
+
 <template>
-  <main>
+  <main class="netart-page">
     <header>
       <router-link to="/" aria-label="Retour à la page d’accueil">
         <img class="back" src="../components/icons/arrow-left-s-line.svg" alt="">
@@ -26,7 +37,10 @@
       <span class="browser-caption">Olia Lialina, “My Boyfriend Came Back from the War”, 1996</span>
     </section>
 
-    <router-link class="nav" to="/cdesktop">C:/desktop</router-link>
+    <footer class="netart-controls">
+      <trad :inline="true" @change-lang="changeLang" />
+      <router-link class="nav" to="/cdesktop">C:/desktop</router-link>
+    </footer>
   </main>
 </template>
 
@@ -102,5 +116,62 @@ section {
   position: absolute;
   bottom: 20px;
   right: 20px;
+}
+
+@media screen and (max-width: 1100px){
+  main{
+    display: flex;
+    flex-direction: column;
+    height: auto;
+    min-height: calc(100dvh - 20px);
+  }
+
+  section{
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    padding-top: 20px;
+    flex: 1 0 auto;
+  }
+
+  .ascii-img,
+  .browser-img{
+    width: 100%;
+    max-width: 100%;
+    height: auto;
+    margin: 0;
+  }
+
+  .ascii-caption,
+  .browser-caption{
+    writing-mode: horizontal-tb;
+    transform: none;
+    justify-self: auto;
+    align-self: auto;
+    margin: -12px 0 0;
+    font-size: $mobile-small-txt;
+  }
+
+  .small-txt,
+  .bottom-txt{
+    max-width: none;
+    font-size: $mobile-txt;
+    line-height: 1.4;
+    text-align: left;
+  }
+
+  .netart-controls{
+    display: flex;
+    flex-direction: row;
+    align-items: flex-end;
+    justify-content: space-between;
+    gap: 16px;
+    padding-top: 24px;
+  }
+
+  .nav{
+    position: static;
+    font-size: $mobile-txt;
+  }
 }
 </style>

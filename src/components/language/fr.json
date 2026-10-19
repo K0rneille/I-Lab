@@ -53,7 +53,8 @@
         "title" : "C:/desktop",
         "txt" : [
                 "Glissez les stickers sur la pages"                  
-        ]     
+        ],
+        "mobileUnavailable": "Cette expérience est disponible sur iPad."
         },
         "mail": {
         "title" : "Enregistrer la composition",

@@ -3,6 +3,7 @@ import { ref, computed, watch, onMounted, onBeforeUnmount } from 'vue';
 
 const props = defineProps({
   current: { type: String, default: 'fr' },
+  inline: { type: Boolean, default: false },
 });
 const emit = defineEmits(['changeLang']);
 
@@ -64,7 +65,7 @@ onBeforeUnmount(() => {
 </script>
 
 <template>
-  <div ref="root" class="form">
+  <div ref="root" class="form" :class="{ 'form--inline': props.inline }">
 
 
     <ul
@@ -99,6 +100,7 @@ onBeforeUnmount(() => {
       aria-controls="listbox"
       aria-haspopup="listbox"
       :aria-expanded="isOpen"
+      :aria-label="buttonLabel"
       @click="toggleDropdown"
     >
       {{ buttonLabel }}
@@ -234,6 +236,41 @@ onBeforeUnmount(() => {
       font-size: .75rem;
 
     }
+}
+
+@media screen and (max-width: 1100px){
+  .form--inline{
+    position: relative;
+    left: auto;
+    bottom: auto;
+
+    .form__select{
+      right: auto;
+      bottom: 49px;
+      width: max-content;
+      min-width: 150px;
+    }
+
+    .form__btn{
+      box-sizing: border-box;
+      width: 48px;
+      height: 48px;
+      padding: 4px;
+      justify-content: center;
+      font-size: 0;
+
+      &:before{
+        width: 32px;
+        height: 32px;
+        flex: 0 0 32px;
+      }
+    }
+
+    .form__option{
+      padding: 8px 12px;
+      text-align: left;
+    }
+  }
 }
 
 

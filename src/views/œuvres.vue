@@ -1,5 +1,16 @@
+<script setup>
+import { useI18n } from 'vue-i18n'
+import trad from '../components/trad.vue'
+
+const { locale } = useI18n()
+
+const changeLang = (code) => {
+  locale.value = code
+}
+</script>
+
 <template>
-  <main>
+  <main class="oeuvres-page">
     <header>
       <router-link to="/" aria-label="Retour à la page d’accueil">
         <img class="back" src="../components/icons/arrow-left-s-line.svg" alt="">
@@ -21,7 +32,6 @@
         alt=""
       >
       <p class="top-txt">{{ $t('otherWorks.txt[1]') }}</p>
-      <p class="left-txt">{{ $t('otherWorks.txt[2]') }}</p>
       <img
         class="dancing-img"
         src="../components/img/dancing.webp"
@@ -32,9 +42,13 @@
         src="../components/img/tomatolive.webp"
         alt=""
       >
+      <p class="left-txt">{{ $t('otherWorks.txt[2]') }}</p>
     </section>
 
-    <router-link class="nav" to="/dda">Desktop Dump Archive</router-link>
+    <footer class="oeuvres-controls">
+      <trad :inline="true" @change-lang="changeLang" />
+      <router-link class="nav" to="/dda">Desktop Dump Archive</router-link>
+    </footer>
   </main>
 </template>
 
@@ -101,5 +115,54 @@ section{
   position: absolute;
   bottom: 20px;
   right: 20px;
+}
+
+@media screen and (max-width: 1100px){
+  main{
+    display: flex;
+    flex-direction: column;
+    height: auto;
+    min-height: calc(100dvh - 20px);
+  }
+
+  section{
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    padding-top: 20px;
+    flex: 1 0 auto;
+  }
+
+  .desktop-img,
+  .folder-img,
+  .dancing-img,
+  .tomato-img{
+    width: 100%;
+    max-width: 100%;
+    height: auto;
+    align-self: flex-start;
+  }
+
+  .top-txt,
+  .left-txt{
+    max-width: none;
+    font-size: $mobile-txt;
+    line-height: 1.4;
+    text-align: left;
+  }
+
+  .oeuvres-controls{
+    display: flex;
+    flex-direction: row;
+    align-items: flex-end;
+    justify-content: space-between;
+    gap: 16px;
+    padding-top: 24px;
+  }
+
+  .nav{
+    position: static;
+    font-size: $mobile-txt;
+  }
 }
 </style>
