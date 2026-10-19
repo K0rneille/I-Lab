@@ -16,7 +16,7 @@ import sponsors from '../components/sponsors.vue'
     <nav aria-label="Pages">
         <ul>
             <li><router-link class="nav" to="/dda">{{ $t('landing.nav[0]') }}</router-link></li>
-            <li><router-link class="nav" to="/mollysoda">{{ $t('landing.nav[1]') }}</router-link></li>
+            <li><router-link class="nav mollyPage" to="/mollysoda">{{ $t('landing.nav[1]') }}</router-link></li>
             <li><router-link class="nav" to="/netart">{{ $t('landing.nav[2]') }}</router-link></li>
             <li><router-link class="nav" to="/cdesktop">{{ $t('landing.nav[3]') }}</router-link></li>
             <li><router-link class="nav" to="/oeuvres">{{ $t('landing.nav[4]') }}</router-link></li>
