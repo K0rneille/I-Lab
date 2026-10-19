@@ -10,7 +10,7 @@
                         "C:/desktop",
                         "+ Werke"
                 ],
-                "qr":"Format für Mobilgeräte"
+                "qr":"Mobilformat"
 
         },
 
@@ -53,7 +53,17 @@
         "title" : "C:/desktop",
         "txt" : [
                 "Zieh die Aufkleber auf die Seiten"                  
-        ]       
+        ]
+        },
+        "mail": {
+        "title" : "Komposition speichern",
+        "txt" : [
+                "Ihre E-Mail-Adresse",
+                "Speichern",
+                "Komposition gespeichert",
+                "Vielen Dank! Ihre Komposition wird an folgende Adresse gesendet:",
+                "Schließen"
+        ]  
 }
 }
 

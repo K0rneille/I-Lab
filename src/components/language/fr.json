@@ -61,7 +61,9 @@
                 "Votre adresse mail",
                 "Enregistrer", 
                 "Composition enregistrée", 
-                "Merci ! Votre composition sera envoyée à"
+                "Merci ! Votre composition sera envoyée à",
+                "Fermer",
+                "nom@exemple.com"
         ]
 }
 }

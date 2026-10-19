@@ -53,7 +53,17 @@
         "title" : "C:/desktop",
         "txt" : [
                 "Slide the stickers onto the page"                  
-        ]       
+        ]
+        },       
+        "mail": {
+        "title" : "Save the composition",
+        "txt" : [
+                "Your email address",
+                "Save", 
+                "Composition saved", 
+                "Thank you! Your composition will be sent to",
+                "Close"
+        ]
 }
 }
 

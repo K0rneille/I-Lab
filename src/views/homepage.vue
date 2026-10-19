@@ -102,7 +102,7 @@ ul{
     position: absolute;
     width: 285px;
     bottom: 120px;
-    left: 20px;
+    left: 27px;
     background-color: $bg-color;
     color: $primary-color;
     font-family: $primary-font;

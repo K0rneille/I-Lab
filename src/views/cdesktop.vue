@@ -285,7 +285,7 @@ const submitEmail = () => {
 <template>
   <main class="cdesktop">
     <header>
-      <router-link to="/" aria-label="Retour à la page d’accueil">
+      <router-link to="/">
         <img class="back" src="../components/icons/arrow-left-s-line.svg" alt="">
       </router-link>
       <h1>C:/desktop</h1>
@@ -319,13 +319,12 @@ const submitEmail = () => {
             <button
               class="resize-handle"
               type="button"
-              aria-label="Redimensionner le sticker"
               @pointerdown="resizeSticker($event, sticker)"
-            />
+            ></button>
           </div>
         </div>
       </div>
-      <button class="save-button" type="button" aria-label="Enregistrer la composition" @click="openEmailPopup">
+      <button class="save-button" type="button"  @click="openEmailPopup">
         <img src="../components/icons/save-3-fill.svg" alt="">
       </button>
 
@@ -343,41 +342,40 @@ const submitEmail = () => {
             <img :src="sticker.url" :alt="sticker.name" draggable="false">
           </div>
         </div>
-        <div ref="scrollbarTrack" class="stickers-scrollbar" aria-label="Défilement des stickers">
-          <button class="scrollbar-arrow" type="button" aria-label="Monter" @click="scrollStickers(-180)">
+        <div ref="scrollbarTrack" class="stickers-scrollbar">
+          <button class="scrollbar-arrow" type="button" @click="scrollStickers(-180)">
             <img src="../components/icons/arrow-up-s-fill.svg" alt="">
           </button>
           <div class="scrollbar-track">
             <button
               class="scrollbar-thumb"
               type="button"
-              aria-label="Faire défiler les stickers"
               :style="{ height: `${scrollbarThumbHeight}px`, transform: `translateY(${scrollbarThumbTop}px)` }"
               @pointerdown="startScrollbarDrag"
-            />
+            ></button>
           </div>
-          <button class="scrollbar-arrow" type="button" aria-label="Descendre" @click="scrollStickers(180)">
+          <button class="scrollbar-arrow" type="button" @click="scrollStickers(180)">
             <img src="../components/icons/arrow-down-s-fill.svg" alt="">
           </button>
         </div>
       </div>
     </section>
 
-    <router-link class="nav works-link" to="/oeuvres">+ D’œuvres</router-link>
+    <router-link class="nav works-link" to="/oeuvres">{{ $t('otherWorks.title') }}</router-link>
 
     <div v-if="isEmailPopupOpen" class="email-overlay" @click.self="closeEmailPopup">
       <form class="email-popup" @submit.prevent="submitEmail">
-        <button class="email-popup__close" type="button" aria-label="Fermer" @click="closeEmailPopup">×</button>
-        <h4>{{ emailSubmitted ? 'Composition enregistrée' : 'Enregistrer la composition' }}</h4>
+        <button class="email-popup__close" type="button" @click="closeEmailPopup">×</button>
+        <h4>{{ emailSubmitted ? $t('mail.txt[2]') : $t('mail.title') }}</h4>
         <template v-if="!emailSubmitted">
-          <label for="composition-email">Votre adresse mail</label>
-          <input id="composition-email" v-model="email" type="email" required placeholder="nom@exemple.com">
+          <label for="composition-email">{{ $t('mail.txt[0]') }}</label>
+          <input id="composition-email" v-model="email" type="email" required placeholder="name@exemple.com">
           <p v-if="saveError" class="email-popup__error">{{ saveError }}</p>
-          <button class="email-popup__submit" type="submit">Enregistrer</button>
+          <button class="email-popup__submit" type="submit">{{ $t('mail.txt[1]') }}</button>
         </template>
         <template v-else>
-          <p>Merci ! Votre composition sera envoyée à {{ email }}.</p>
-          <button class="email-popup__submit" type="button" @click="closeEmailPopup">Fermer</button>
+          <p>{{ $t('mail.txt[3]') }} {{ email }}.</p>
+          <button class="email-popup__submit" type="button" @click="closeEmailPopup">{{ $t('mail.txt[4]') }}</button>
         </template>
       </form>
     </div>
@@ -392,12 +390,12 @@ const submitEmail = () => {
   height: 794px;
   overflow: hidden;
   position: relative;
-  box-sizing: border-box;
+  box-sizing: border-box;;
 }
 
 .editor {
   display: grid;
-  grid-template-columns: 861px 250px;
+  grid-template-columns: 861px 273px;
   gap: 20px;
   height: 517px;
 }

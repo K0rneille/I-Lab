@@ -53,7 +53,17 @@
         "title" : "C:/desktop",
         "txt" : [
                 "Plak de stickers op de pagina’s"                  
-        ]       
+        ]
+        },
+        "mail": {
+        "title" : "De compositie opslaan",
+        "txt" : [
+                "Uw e-mailadres",
+                "Opslaan", 
+                "Compositie opgeslagen", 
+                "Bedankt! Uw compositie wordt verzonden naar",
+                "Sluiten"
+        ]
 }
 }
 

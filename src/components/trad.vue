@@ -115,7 +115,7 @@ onBeforeUnmount(() => {
 }
 .form{
   position: fixed;
-  left: 20px;
+  left: 27px;
   bottom: 20px;
   z-index: 10;
   
