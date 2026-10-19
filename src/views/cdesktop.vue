@@ -15,7 +15,12 @@ const stickers = Object.entries(stickerFiles)
     url,
   }))
 
+const compositionsStorageKey = 'cdesktop-compositions'
+const defaultStickerSize = 90
+const minimumStickerSize = 35
+const minimumVisibleSize = 10
 const composition = ref([])
+const savedCompositions = ref(Array.isArray(initialCompositions) ? initialCompositions : [])
 const canvas = ref(null)
 const isEmailPopupOpen = ref(false)
 const email = ref('')
@@ -28,14 +33,8 @@ const scrollMetrics = ref({ top: 0, height: 0, scrollHeight: 0, trackHeight: 0 }
 const draggingScrollbar = ref(false)
 const scrollbarDragStart = ref(0)
 const scrollTopAtDragStart = ref(0)
-const savedCompositions = ref(
-  Array.isArray(initialCompositions) ? initialCompositions : [],
-)
-const localCompositions = ref([])
 const saveError = ref('')
-const compositionsStorageKey = 'cdesktop-compositions'
 
-const popupTitle = computed(() => (emailSubmitted.value ? 'Composition enregistrée' : 'Enregistrer la composition'))
 const scrollbarThumbHeight = computed(() => {
   const { height, scrollHeight, trackHeight } = scrollMetrics.value
   if (!trackHeight || scrollHeight <= height) return trackHeight
@@ -96,10 +95,9 @@ onMounted(() => {
   try {
     const storedCompositions = localStorage.getItem(compositionsStorageKey)
     if (storedCompositions) {
-      const storedLocalCompositions = JSON.parse(storedCompositions)
-      if (Array.isArray(storedLocalCompositions)) {
-        localCompositions.value = storedLocalCompositions
-        savedCompositions.value = [...savedCompositions.value, ...storedLocalCompositions]
+      const storedData = JSON.parse(storedCompositions)
+      if (Array.isArray(storedData)) {
+        savedCompositions.value = storedData
       }
     }
   } catch (error) {
@@ -115,7 +113,7 @@ onBeforeUnmount(() => {
 
 const addSticker = (sticker, clientX, clientY) => {
   const bounds = canvas.value.getBoundingClientRect()
-  const size = 90
+  const size = defaultStickerSize
   const x = Math.max(0, Math.min(bounds.width - size, clientX - bounds.left - size / 2))
   const y = Math.max(0, Math.min(bounds.height - size, clientY - bounds.top - size / 2))
 
@@ -145,7 +143,6 @@ const handlePalettePointerDown = (event, sticker) => {
   if (event.pointerType !== 'touch') return
 
   event.preventDefault()
-  draggedSticker.value = sticker
 
   const stopDragging = (stopEvent) => {
     const bounds = canvas.value.getBoundingClientRect()
@@ -157,7 +154,6 @@ const handlePalettePointerDown = (event, sticker) => {
 
     if (isInsideCanvas) addSticker(sticker, stopEvent.clientX, stopEvent.clientY)
 
-    draggedSticker.value = null
     window.removeEventListener('pointerup', stopDragging)
     window.removeEventListener('pointercancel', stopDragging)
   }
@@ -188,7 +184,8 @@ const moveSticker = (event, sticker) => {
       0,
       Math.min(sticker.y + sticker.size, bounds.height) - Math.max(sticker.y, 0),
     )
-    const hasMinimumVisibleArea = visibleWidth >= 10 && visibleHeight >= 10
+    const hasMinimumVisibleArea =
+      visibleWidth >= minimumVisibleSize && visibleHeight >= minimumVisibleSize
 
     if (!hasMinimumVisibleArea) {
       composition.value = composition.value.filter(
@@ -198,10 +195,12 @@ const moveSticker = (event, sticker) => {
 
     window.removeEventListener('pointermove', move)
     window.removeEventListener('pointerup', stop)
+    window.removeEventListener('pointercancel', stop)
   }
 
   window.addEventListener('pointermove', move)
   window.addEventListener('pointerup', stop)
+  window.addEventListener('pointercancel', stop)
 }
 
 const resizeSticker = (event, sticker) => {
@@ -213,7 +212,7 @@ const resizeSticker = (event, sticker) => {
   const startX = event.clientX
   const startY = event.clientY
   const originalSize = sticker.size
-  const minimumSize = 35
+  const minimumSize = minimumStickerSize
   const maximumSize = Math.min(bounds.width - sticker.x, bounds.height - sticker.y)
 
   const resize = (resizeEvent) => {
@@ -268,12 +267,11 @@ const submitEmail = () => {
       zIndex: sticker.zIndex,
     })),
   }
-  const updatedCompositions = [...localCompositions.value, compositionRecord]
+  const updatedCompositions = [...savedCompositions.value, compositionRecord]
 
   try {
     localStorage.setItem(compositionsStorageKey, JSON.stringify(updatedCompositions))
-    localCompositions.value = updatedCompositions
-    savedCompositions.value = [...savedCompositions.value, compositionRecord]
+    savedCompositions.value = updatedCompositions
   } catch (error) {
     saveError.value = 'La composition n’a pas pu être enregistrée.'
     console.error('Impossible d’enregistrer la composition.', error)
@@ -370,7 +368,7 @@ const submitEmail = () => {
     <div v-if="isEmailPopupOpen" class="email-overlay" @click.self="closeEmailPopup">
       <form class="email-popup" @submit.prevent="submitEmail">
         <button class="email-popup__close" type="button" aria-label="Fermer" @click="closeEmailPopup">×</button>
-        <h4>{{ popupTitle }}</h4>
+        <h4>{{ emailSubmitted ? 'Composition enregistrée' : 'Enregistrer la composition' }}</h4>
         <template v-if="!emailSubmitted">
           <label for="composition-email">Votre adresse mail</label>
           <input id="composition-email" v-model="email" type="email" required placeholder="nom@exemple.com">
