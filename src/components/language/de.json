@@ -10,7 +10,7 @@
                         "C:/desktop",
                         "+ Werke"
                 ],
-                "qr":"Mobilformat"
+                "qr":"Format für Mobilgeräte"
 
         },
 
@@ -37,8 +37,8 @@
                 "title" : "+ Werke",
                 "txt" : [
                         "Molly Sodas Handschrift",
-                        "Sie greift gerne auf Dinge zurück, die gemeinhin als privat, beschämend, unerwünscht oder trivial gelten. Die Präsentation von Archivmaterial über sich selbst und die Inszenierung „alltäglicher“ Situationen sind ein wiederkehrendes Merkmal ihrer Kunst.",
-                        "In ihrem kreativen Schaffensprozess lässt sich Molly Soda stark von ihren Erfahrungen im Internet und in den sozialen Medien inspirieren."                        
+                        "In ihrem kreativen Schaffensprozess lässt sich Molly Soda stark von ihren Erfahrungen im Internet und in den sozialen Medien inspirieren."                        ,
+                        "Sie greift gerne auf Dinge zurück, die gemeinhin als privat, beschämend, unerwünscht oder trivial gelten. Die Präsentation von Archivmaterial über sich selbst und die Inszenierung „alltäglicher“ Situationen sind ein wiederkehrendes Merkmal ihrer Kunst."
                 ]       
         },
         "artisticMovement": {
