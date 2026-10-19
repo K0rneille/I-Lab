@@ -1,11 +1,69 @@
 <script setup >
   import trad from './components/trad.vue'
-  import { useI18n } from 'vue-i18n'
+  import router from './router/index.js';
+  import { useRoute } from 'vue-router';
+  import { useI18n } from 'vue-i18n';
+  import {createtimer} from './timer.js';
+  import { onMounted, onUnmounted } from 'vue';
+
   const { locale } = useI18n()
 
   const changeLang = (param)=>{
     locale.value = param;
   }
+
+  function allerAlaccueil () {
+    router.push('/');
+  }
+
+  const route = useRoute()
+
+  const timerMain = (maxi = 90) => {
+
+    const timer = createtimer((s) => {
+
+      if (route.name === "cdesktop" ){
+        maxi = 300 ;
+      
+    } else {
+        maxi = 90 ;
+    }
+
+    console.log(s)
+
+      if (s >= maxi) {
+        reset()
+        allerAlaccueil()
+      }
+ 
+      
+    });
+
+    window.addEventListener('pointerdown', (e)=> {
+      reset()
+
+    })
+
+    onMounted(() => timer.start());
+    onUnmounted(() => timer.stop());   // ← nettoie l'intervalle
+
+  function reset () {
+
+    timer.reset()
+    timer.start()
+  }
+
+  }
+  
+timerMain()
+
+
+window.addEventListener('pointerdown', (e)=> {
+  
+})
+
+
+
 
 
 </script>
