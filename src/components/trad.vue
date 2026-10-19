@@ -117,7 +117,6 @@ onBeforeUnmount(() => {
   position: fixed;
   left: 20px;
   bottom: 20px;
-  margin: 0;
   z-index: 10;
   
 
@@ -128,14 +127,14 @@ onBeforeUnmount(() => {
       left: 0;
       right: 0;
       opacity: 0;
-      height: 0;
+      height: fit-content;
       transform-origin: bottom left;
       transition: all .3s ease-in;
       pointer-events: none;
       z-index: 2;
       bottom: 76px ;
       list-style: none;
-      padding: 0; 
+      padding: 0;
 
 
 
@@ -190,10 +189,14 @@ onBeforeUnmount(() => {
     }
 
     &__option{
+    font-family: $primary-font;
+    list-style: none;
+    font-size: 28px;
+
       text-align: right;
-      padding: 2px 16px;
+      padding: 0 16px 0 0;
       cursor: pointer;
-      display:inline-block;
+      display:block;
 
 
       font-weight: 700;
@@ -201,7 +204,7 @@ onBeforeUnmount(() => {
       left: 0;
       width: 100%;
       background: $bg-color;
-      border: 1px solid #ccc;
+      border: 1px solid $primary-color;
 
         opacity: 0;
         transform: translateY(calc(100% * (var(--i) + 1)));
