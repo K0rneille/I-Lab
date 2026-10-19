@@ -1,5 +1,5 @@
 <script setup>
-import { computed, ref } from 'vue'
+import { computed, onMounted, onBeforeUnmount, ref } from 'vue'
 
 const stickerFiles = import.meta.glob(
   '../components/img/interaction/*.{gif,webp,png,jpg,jpeg}',
@@ -21,8 +21,78 @@ const email = ref('')
 const emailSubmitted = ref(false)
 const draggedSticker = ref(null)
 const nextZIndex = ref(1)
+const stickersList = ref(null)
+const scrollbarTrack = ref(null)
+const scrollMetrics = ref({ top: 0, height: 0, scrollHeight: 0, trackHeight: 0 })
+const draggingScrollbar = ref(false)
+const scrollbarDragStart = ref(0)
+const scrollTopAtDragStart = ref(0)
 
 const popupTitle = computed(() => (emailSubmitted.value ? 'Composition enregistrée' : 'Enregistrer la composition'))
+const scrollbarThumbHeight = computed(() => {
+  const { height, scrollHeight, trackHeight } = scrollMetrics.value
+  if (!trackHeight || scrollHeight <= height) return trackHeight
+  return Math.min(trackHeight, Math.max(28, (trackHeight * height) / scrollHeight))
+})
+const scrollbarThumbTop = computed(() => {
+  const { top, height, scrollHeight, trackHeight } = scrollMetrics.value
+  const availableHeight = trackHeight - scrollbarThumbHeight.value
+  const maxScroll = scrollHeight - height
+  return maxScroll > 0 ? (top / maxScroll) * availableHeight : 0
+})
+
+const updateScrollbar = () => {
+  if (!stickersList.value) return
+  scrollMetrics.value = {
+    top: stickersList.value.scrollTop,
+    height: stickersList.value.clientHeight,
+    scrollHeight: stickersList.value.scrollHeight,
+    trackHeight: scrollbarTrack.value?.clientHeight ?? 0,
+  }
+}
+
+const scrollStickers = (amount) => {
+  stickersList.value?.scrollBy({ top: amount, behavior: 'smooth' })
+}
+
+const startScrollbarDrag = (event) => {
+  event.preventDefault()
+  draggingScrollbar.value = true
+  scrollbarDragStart.value = event.clientY
+  scrollTopAtDragStart.value = stickersList.value?.scrollTop ?? 0
+  window.addEventListener('pointermove', moveScrollbar)
+  window.addEventListener('pointerup', stopScrollbarDrag)
+  window.addEventListener('pointercancel', stopScrollbarDrag)
+}
+
+const moveScrollbar = (event) => {
+  if (!draggingScrollbar.value || !stickersList.value || !scrollbarTrack.value) return
+  const trackHeight = scrollbarTrack.value.clientHeight
+  const availableHeight = trackHeight - scrollbarThumbHeight.value
+  const maxScroll = stickersList.value.scrollHeight - stickersList.value.clientHeight
+  if (availableHeight <= 0 || maxScroll <= 0) return
+
+  const distance = event.clientY - scrollbarDragStart.value
+  stickersList.value.scrollTop =
+    scrollTopAtDragStart.value + (distance / availableHeight) * maxScroll
+}
+
+const stopScrollbarDrag = () => {
+  draggingScrollbar.value = false
+  window.removeEventListener('pointermove', moveScrollbar)
+  window.removeEventListener('pointerup', stopScrollbarDrag)
+  window.removeEventListener('pointercancel', stopScrollbarDrag)
+}
+
+onMounted(() => {
+  updateScrollbar()
+  window.addEventListener('resize', updateScrollbar)
+})
+
+onBeforeUnmount(() => {
+  stopScrollbarDrag()
+  window.removeEventListener('resize', updateScrollbar)
+})
 
 const addSticker = (sticker, clientX, clientY) => {
   const bounds = canvas.value.getBoundingClientRect()
@@ -85,31 +155,26 @@ const moveSticker = (event, sticker) => {
   const startY = event.clientY
   const originalX = sticker.x
   const originalY = sticker.y
-  let lastX = startX
-  let lastY = startY
 
   const move = (moveEvent) => {
-    lastX = moveEvent.clientX
-    lastY = moveEvent.clientY
     sticker.x = originalX + moveEvent.clientX - startX
     sticker.y = originalY + moveEvent.clientY - startY
   }
-  const stop = (stopEvent) => {
-    lastX = stopEvent.clientX
-    lastY = stopEvent.clientY
-    const pointerIsOutside =
-      lastX < bounds.left ||
-      lastX > bounds.right ||
-      lastY < bounds.top ||
-      lastY > bounds.bottom
+  const stop = () => {
+    const visibleWidth = Math.max(
+      0,
+      Math.min(sticker.x + sticker.size, bounds.width) - Math.max(sticker.x, 0),
+    )
+    const visibleHeight = Math.max(
+      0,
+      Math.min(sticker.y + sticker.size, bounds.height) - Math.max(sticker.y, 0),
+    )
+    const hasMinimumVisibleArea = visibleWidth >= 10 && visibleHeight >= 10
 
-    if (pointerIsOutside) {
+    if (!hasMinimumVisibleArea) {
       composition.value = composition.value.filter(
         ({ instanceId }) => instanceId !== sticker.instanceId,
       )
-    } else {
-      sticker.x = Math.max(0, Math.min(bounds.width - sticker.size, sticker.x))
-      sticker.y = Math.max(0, Math.min(bounds.height - sticker.size, sticker.y))
     }
 
     window.removeEventListener('pointermove', move)
@@ -214,7 +279,7 @@ const submitEmail = () => {
 
       <div class="window stickers-window">
         <h3>Stickers</h3>
-        <div class="stickers-window__list">
+        <div ref="stickersList" class="stickers-window__list" @scroll="updateScrollbar">
           <div
             v-for="sticker in stickers"
             :key="sticker.id"
@@ -225,6 +290,23 @@ const submitEmail = () => {
           >
             <img :src="sticker.url" :alt="sticker.name" draggable="false">
           </div>
+        </div>
+        <div ref="scrollbarTrack" class="stickers-scrollbar" aria-label="Défilement des stickers">
+          <button class="scrollbar-arrow" type="button" aria-label="Monter" @click="scrollStickers(-180)">
+            <img src="../components/icons/arrow-up-s-fill.svg" alt="">
+          </button>
+          <div class="scrollbar-track">
+            <button
+              class="scrollbar-thumb"
+              type="button"
+              aria-label="Faire défiler les stickers"
+              :style="{ height: `${scrollbarThumbHeight}px`, transform: `translateY(${scrollbarThumbTop}px)` }"
+              @pointerdown="startScrollbarDrag"
+            />
+          </div>
+          <button class="scrollbar-arrow" type="button" aria-label="Descendre" @click="scrollStickers(180)">
+            <img src="../components/icons/arrow-down-s-fill.svg" alt="">
+          </button>
         </div>
       </div>
     </section>
@@ -355,20 +437,77 @@ const submitEmail = () => {
 
 .stickers-window__list {
   height: calc(100% - 44px);
-  overflow-y: scroll;
+  overflow-y: auto;
   overflow-x: hidden;
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   align-content: start;
   gap: 12px;
-  padding: 14px;
+  padding: 14px 20px 14px 14px;
   box-sizing: border-box;
+  scrollbar-width: none;
+}
+
+.stickers-window__list::-webkit-scrollbar {
+  display: none;
 }
 
 .sticker-item {
   height: 92px;
   cursor: grab;
   touch-action: none;
+}
+
+.stickers-scrollbar {
+  width: 24px;
+  position: absolute;
+  top: 44px;
+  right: 0;
+  bottom: 0;
+  background: #EBEBEB;
+  box-shadow: inset -2px 0 0 #828282, inset 0 -2px 0 #828282;
+}
+
+.scrollbar-arrow {
+  width: 24px;
+  height: 24px;
+  padding: 0;
+  display: grid;
+  place-items: center;
+  border: 0;
+  background: #ADADAD;
+  box-shadow: inset -2px 0 0 #828282, inset 0 -2px 0 #828282;
+  cursor: pointer;
+}
+
+.scrollbar-arrow img {
+  width: 24px;
+  height: 24px;
+}
+
+.scrollbar-track {
+  height: calc(100% - 48px);
+  position: relative;
+  background: #EBEBEB;
+  overflow: hidden;
+}
+
+.scrollbar-thumb {
+  width: 24px;
+  min-height: 28px;
+  padding: 0;
+  position: absolute;
+  top: 0;
+  left: 0;
+  border: 0;
+  background: #ADADAD;
+  box-shadow: inset -2px 0 0 #828282, inset 0 -2px 0 #828282;
+  cursor: grab;
+  touch-action: none;
+}
+
+.scrollbar-thumb:active {
+  cursor: grabbing;
 }
 
 .works-link {
