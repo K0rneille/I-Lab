@@ -66,18 +66,7 @@ onBeforeUnmount(() => {
 
 <template>
   <div ref="root" class="form">
-    <button
-      ref="button"
-      type="button"
-      class="form__btn"
-      role="combobox"
-      aria-controls="listbox"
-      aria-haspopup="listbox"
-      :aria-expanded="isOpen"
-      @click="toggleDropdown"
-    >
-      {{ buttonLabel }}
-    </button>
+
 
     <ul
       id="listbox"
@@ -102,6 +91,19 @@ onBeforeUnmount(() => {
         {{ lang.label }}
       </li>
     </ul>
+
+    <button
+      ref="button"
+      type="button"
+      class="form__btn"
+      role="combobox"
+      aria-controls="listbox"
+      aria-haspopup="listbox"
+      :aria-expanded="isOpen"
+      @click="toggleDropdown"
+    >
+      {{ buttonLabel }}
+    </button>
   </div>
 </template>
 
@@ -117,22 +119,23 @@ onBeforeUnmount(() => {
   bottom: 20px;
   margin: 0;
   z-index: 10;
-  width: 220px;
+  
 
 
     &__select{
+      overflow: hidden;
       position: absolute;
       left: 0;
       right: 0;
       opacity: 0;
-      transform: scale(1,0);
-      transform-origin: top left;
+      height: 0;
+      transform-origin: bottom left;
       transition: all .3s ease-in;
       pointer-events: none;
       z-index: 2;
-      top: 64px ;
+      bottom: 76px ;
       list-style: none;
-      padding: 0;
+      padding: 0; 
 
 
 
@@ -142,7 +145,7 @@ onBeforeUnmount(() => {
       font-size: 28px;  
       display: block;
 
-      width: 60%;
+      width: 100%;
       margin: 0 auto;
       text-align: left;
       background: $bg-color;
@@ -150,7 +153,7 @@ onBeforeUnmount(() => {
 
       &--active {
         opacity: 1;
-        transform: scale(1, 1);
+        height: fit-content;
         pointer-events: auto;
 
       }
@@ -200,18 +203,18 @@ onBeforeUnmount(() => {
       background: $bg-color;
       border: 1px solid #ccc;
 
-
-      
-
         opacity: 0;
-        transform: translateY(-8px);
-        transition: opacity .2s ease, transform .2s ease; // pas de délai à la fermeture
-
-        // état ouvert : chaque option arrive avec un retard croissant
+        transform: translateY(calc(100% * (var(--i) + 1)));
+        transition:
+        transform 0.3s ease-out,
+        opacity 0.3s ease-out;
+        transition-delay: calc( var(--i) * 80ms);
+            // état ouvert : chaque option arrive avec un retard croissant
         .form__select--active & {
-          opacity: 1;
-          transform: translateY(0);
-          transition-delay: calc(var(--i) * 60ms);
+      opacity: 1;
+      transform: translateY(0);
+      transition-delay: calc(var(--i) * 80ms);
+
         }
         &--active {
           background: #222;
