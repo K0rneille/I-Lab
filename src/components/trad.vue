@@ -37,6 +37,7 @@ const select = (code) => {
   emit('changeLang', code);
   closeDropdown();
   button.value?.focus();
+  console.log(code)
 };
 
 

@@ -12,9 +12,9 @@ import page from '../components/page.vue'
     <h3>{{ $t("landing.txt") }}</h3>
 
     <div class="sponsor">
-        <img class="sponsor-img" src="../components/img/designmuseumbrussels.webp" alt="">
-        <img class="sponsor-img" src="../components/img/designmuseumbrussels.webp" alt="">
-        <img class="sponsor-img" src="../components/img/designmuseumbrussels.webp" alt="">
+        <img class="sponsor-img" src="../components/img/sponsors/designmuseumbrussels.webp" alt="">
+        <img class="sponsor-img" src="../components/img/sponsors/tumblr.webp" alt="">
+        <img class="sponsor-img" src="../components/img/sponsors/visitwallonia.webp" alt="">
     </div>
     
     <nav aria-label="Pages">
