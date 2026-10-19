@@ -241,9 +241,15 @@ const openEmailPopup = () => {
 }
 
 const closeEmailPopup = () => {
+  const compositionWasSaved = emailSubmitted.value
   isEmailPopupOpen.value = false
   emailSubmitted.value = false
   saveError.value = ''
+  email.value = ''
+
+  if (compositionWasSaved) {
+    composition.value = []
+  }
 }
 
 const submitEmail = () => {
@@ -320,10 +326,10 @@ const submitEmail = () => {
             />
           </div>
         </div>
-        <button class="save-button" type="button" aria-label="Enregistrer la composition" @click="openEmailPopup">
-          <img src="../components/icons/save-3-fill.svg" alt="">
-        </button>
       </div>
+      <button class="save-button" type="button" aria-label="Enregistrer la composition" @click="openEmailPopup">
+        <img src="../components/icons/save-3-fill.svg" alt="">
+      </button>
 
       <div class="window stickers-window">
         <h3>Stickers</h3>
@@ -469,10 +475,10 @@ const submitEmail = () => {
 
 .save-button {
   position: absolute;
-  right: -2px;
-  bottom: -78px;
-  width: 52px;
-  height: 52px;
+  right: 293px;
+  bottom: 0px;
+  width: 76px;
+  height: 76px;
   padding: 5px;
   border: 3px solid $primary-color;
   background: $bg-color;
@@ -568,7 +574,7 @@ const submitEmail = () => {
 .email-overlay {
   position: fixed;
   inset: 0;
-  z-index: 20;
+  z-index: 10000;
   display: grid;
   place-items: center;
   background: rgb(36 48 38 / 25%);
