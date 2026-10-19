@@ -86,6 +86,7 @@ main{
 h1{
   font-family: $secondary-font;
   font-size: $title;
+  font-weight: light;
   line-height: 0;
   letter-spacing: -3px;
   color: $primary-color;
