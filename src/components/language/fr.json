@@ -52,7 +52,16 @@
         "experience": {
         "title" : "C:/desktop",
         "txt" : [
-                " Glissez les stickers sur la pages"                  
-        ]       
+                "Glissez les stickers sur la pages"                  
+        ]     
+        },
+        "mail": {
+        "title" : "Enregistrer la composition",
+        "txt" : [
+                "Votre adresse mail",
+                "Enregistrer", 
+                "Composition enregistrée", 
+                "Merci ! Votre composition sera envoyée à"
+        ]
 }
 }
