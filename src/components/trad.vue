@@ -106,14 +106,18 @@ onBeforeUnmount(() => {
 </template>
 
 <style scoped lang="scss">
-
+@use '../app.scss' as *;
 
 *{
   box-sizing: border-box;
 }
 .form{
-  margin: 1.2rem 0;
-  position: relative;
+  position: fixed;
+  left: 20px;
+  bottom: 20px;
+  margin: 0;
+  z-index: 10;
+  width: 220px;
 
 
     &__select{
@@ -141,7 +145,7 @@ onBeforeUnmount(() => {
       width: 60%;
       margin: 0 auto;
       text-align: left;
-      background: white;
+      background: $bg-color;
       border: 0;
 
       &--active {
@@ -158,14 +162,15 @@ onBeforeUnmount(() => {
       z-index: 10;
       position: relative;
       display: block;
-      width: 60%;
+      width: 285px;
       padding: 8px 16px;
       font-size: 28px;
       font-weight: 700;
+      color: $primary-color;
       margin: 0 auto;
       text-align: left;
-      background: white;
-      border: 0;
+      background: $bg-color;
+      border: 3px solid $primary-color;
 
       display: flex;
       justify-content: space-between;
@@ -192,7 +197,7 @@ onBeforeUnmount(() => {
       border-radius: 0;
       left: 0;
       width: 100%;
-      background: white;
+      background: $bg-color;
       border: 1px solid #ccc;
 
 
@@ -230,5 +235,3 @@ onBeforeUnmount(() => {
 
 
 </style>
-
-

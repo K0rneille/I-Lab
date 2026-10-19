@@ -1,17 +1,82 @@
 <template>
   <main>
-    <section class="header">
-        <nav>
-            <router-link to="/" aria-label="Retour à la page d’accueil">
-              <img class="icon" src="../components/icons/arrow-left-s-line.svg" alt="">
-            </router-link>
-        </nav>
-        <h1>{{ $t('Author.title') }}</h1>
-    </section>  
+    <header>
+      <router-link to="/" aria-label="Retour à la page d’accueil">
+        <img class="back" src="../components/icons/arrow-left-s-line.svg" alt="">
+      </router-link>
+      <h1>{{ $t('Author.title') }}</h1>
+    </header>
+
     <h2>{{ $t('Author.txt[0]') }}</h2>
-    <p>{{ $t('Author.txt[1]') }}</p>
-    <img src="../components/img/mollysoda.webp" alt="">
-    <p>{{ $t('Author.txt[2]') }}</p>
-    <img src="../components/img/mollysoda1.webp" alt="">
+
+    <section>
+      <p class="small-txt">{{ $t('Author.txt[1]') }}</p>
+      <img
+        class="small-img"
+        src="../components/img/mollysoda.webp"
+        alt=""
+      >
+      <img
+        class="big-img"
+        src="../components/img/mollysoda1.webp"
+        alt=""
+      >
+      <p class="left-txt">{{ $t('Author.txt[2]') }}</p>
+    </section>
+
+    <router-link class="nav" to="/netart">Net.art</router-link>
   </main>
 </template>
+
+<style lang="scss" scoped>
+@use '../app.scss' as *;
+
+.small-img {
+  width: 170px;
+  height: auto;
+  grid-column: 3 / 4;
+  grid-row: 1 / 2;
+  align-self: end;
+}
+
+.big-img {
+  width: 637px;
+  height: 280px;
+  object-fit: cover;
+  object-position: center 16%;
+  grid-column: 1 / 3;
+  grid-row: 2 / 3;
+  justify-self: end;
+}
+
+section {
+  grid-template-columns: auto auto 170px auto;
+  grid-template-rows: auto auto;
+  justify-content: center;
+  gap: 20px;
+}
+
+.small-txt {
+  grid-column: 1 / 3;
+  grid-row: 1 / 2;
+  text-align: right;
+  justify-self: end;
+  align-self: end;
+  margin-bottom: 0;
+  max-width: 340px;
+  font-size: $small-txt;
+}
+
+.left-txt {
+  grid-column: 3 / 5;
+  grid-row: 2 / 3;
+  margin-top: 0;
+  max-width: 480px;
+}
+
+.nav{
+  position: absolute;
+  bottom: 20px;
+  right: 20px;
+}
+</style>

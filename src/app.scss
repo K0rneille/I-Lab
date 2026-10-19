@@ -1,66 +1,35 @@
-*,
-*::before,
-*::after {
-  box-sizing: border-box;
+@import url('https://fonts.googleapis.com/css2?family=Geist+Pixel&display=swap');
+
+.geist-pixel {
+  font-family: "Geist Pixel", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-style: normal;
+  font-variation-settings:
+    "ELSH" 0;
 }
 
-html {
-  min-width: 320px;
-  background: #fff;
-}
+/* colors */
+$primary-color: #243026;
+$bg-color: #fff;
+$alt-color: #068A22;
+$link-color: #0000FF;
 
-body {
-  min-width: 320px;
-  margin: 0;
-  color: #26352b;
-  font-family: Arial, Helvetica, sans-serif;
-}
+/* type */ 
+$big-title: 113px;
+$title: 101px;
+$subtitle: 57px;
+$nav: 40px;
+$txt: 28px;
+$small-txt: 20px;
+$caption: 14px;
 
-button,
-select {
-  font: inherit;
-}
+$primary-font: 'arial', sans-serif;
+$secondary-font: "Geist Pixel", sans-serif;
 
-.language-picker {
-  position: fixed;
-  z-index: 10;
-  bottom: 18px;
-  left: 18px;
-  display: grid;
-  width: 50px;
-  height: 50px;
-  place-items: center;
-  border: 3px solid #26352b;
-  background: #fff;
-  color: #26352b;
-  cursor: pointer;
-
-  &__icon {
-    font-size: 1.5rem;
-    font-weight: 700;
-    line-height: 1;
-  }
-
-  select {
-    position: absolute;
-    inset: 0;
-    width: 100%;
-    height: 100%;
-    opacity: 0;
-    cursor: pointer;
-  }
-
-  &:focus-within {
-    outline: 3px solid #078c2d;
-    outline-offset: 3px;
-  }
-}
-
-@media (max-width: 639px) {
-  .language-picker {
-    bottom: 10px;
-    left: 10px;
-    width: 48px;
-    height: 48px;
-  }
-}
+/* mobile */
+$mobile-title: 32px;
+$mobile-subtitle: 32px;
+$mobile-txt: 23px;
+$mobile-nav: 40px;
+$mobile-small-txt: 16px;
