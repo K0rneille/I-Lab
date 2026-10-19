@@ -1,5 +1,5 @@
 <script setup>
-import page from '../components/page.vue'
+import sponsors from '../components/sponsors.vue'
 </script>
 
 <template>
@@ -11,11 +11,7 @@ import page from '../components/page.vue'
     <h2>{{ $t("landing.subtitle") }}</h2>
     <h3>{{ $t("landing.txt") }}</h3>
 
-    <div class="sponsor">
-        <img class="sponsor-img" src="../components/img/sponsors/designmuseumbrussels.webp" alt="">
-        <img class="sponsor-img" src="../components/img/sponsors/tumblr.webp" alt="">
-        <img class="sponsor-img" src="../components/img/sponsors/visitwallonia.webp" alt="">
-    </div>
+    <sponsors />
     
     <nav aria-label="Pages">
         <ul>
