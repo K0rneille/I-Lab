@@ -1,11 +1,29 @@
 <script setup>
+import { ref } from 'vue'
 import { useI18n } from 'vue-i18n'
+import ImagePreviewDialog from '../components/imagePreview.vue'
 import trad from '../components/trad.vue'
 
 const { locale } = useI18n()
 
 const changeLang = (code) => {
   locale.value = code
+}
+
+const preview = ref(null)
+let previewTrigger = null
+
+const openPreview = (event) => {
+  previewTrigger = event.currentTarget
+  preview.value = {
+    src: previewTrigger.currentSrc,
+    alt: previewTrigger.alt,
+  }
+}
+
+const closePreview = () => {
+  preview.value = null
+  previewTrigger?.focus()
 }
 </script>
 
@@ -23,24 +41,56 @@ const changeLang = (code) => {
     <section>
       <img
         class="desktop-img"
+        :class="{ 'image-preview-trigger': true }"
         src="../components/img/cleaningdesktop.webp"
-        alt=""
+        :alt="$t('imageAlt.cleaningDesktop')"
+        role="button"
+        tabindex="0"
+        aria-haspopup="dialog"
+        :aria-label="$t('imageAlt.cleaningDesktop')"
+        @click="openPreview"
+        @keydown.enter.prevent="openPreview"
+        @keydown.space.prevent="openPreview"
       >
       <img
         class="folder-img"
+        :class="{ 'image-preview-trigger': true }"
         src="../components/img/haircutfolder.webp"
-        alt=""
+        :alt="$t('imageAlt.haircutFolder')"
+        role="button"
+        tabindex="0"
+        aria-haspopup="dialog"
+        :aria-label="$t('imageAlt.haircutFolder')"
+        @click="openPreview"
+        @keydown.enter.prevent="openPreview"
+        @keydown.space.prevent="openPreview"
       >
       <p class="top-txt">{{ $t('otherWorks.txt[1]') }}</p>
       <img
         class="dancing-img"
+        :class="{ 'image-preview-trigger': true }"
         src="../components/img/dancing.webp"
-        alt=""
+        :alt="$t('imageAlt.dancingArtwork')"
+        role="button"
+        tabindex="0"
+        aria-haspopup="dialog"
+        :aria-label="$t('imageAlt.dancingArtwork')"
+        @click="openPreview"
+        @keydown.enter.prevent="openPreview"
+        @keydown.space.prevent="openPreview"
       >
       <img
         class="tomato-img"
+        :class="{ 'image-preview-trigger': true }"
         src="../components/img/tomatolive.webp"
-        alt=""
+        :alt="$t('imageAlt.tomatoLive')"
+        role="button"
+        tabindex="0"
+        aria-haspopup="dialog"
+        :aria-label="$t('imageAlt.tomatoLive')"
+        @click="openPreview"
+        @keydown.enter.prevent="openPreview"
+        @keydown.space.prevent="openPreview"
       >
       <p class="left-txt">{{ $t('otherWorks.txt[2]') }}</p>
     </section>
@@ -49,6 +99,12 @@ const changeLang = (code) => {
       <trad :inline="true" @change-lang="changeLang" />
       <router-link class="nav" to="/dda">Desktop Dump Archive</router-link>
     </footer>
+    <ImagePreviewDialog
+      v-if="preview"
+      :src="preview.src"
+      :alt="preview.alt"
+      @close="closePreview"
+    />
   </main>
 </template>
 

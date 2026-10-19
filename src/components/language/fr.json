@@ -1,4 +1,25 @@
 {
+        "imageAlt": {
+                "mollyBanner": "Bannière de Molly Soda composée d’un montage d’images.",
+                "desktopArchive": "Capture d’écran d’un bureau d’ordinateur couvert de fichiers, d’images et de fenêtres.",
+                "mollyCollage": "Portrait de Molly Soda entourée de papillons et de fleurs sur un fond bleu.",
+                "mollyPortrait": "Portrait de Molly Soda en veste rouge devant un mur bleu.",
+                "deepAscii": "Œuvre Deep ASCII de Vuk Ćosić : une image représentée avec des caractères verts sur fond noir.",
+                "browserArtwork": "Capture de l’œuvre web My Boyfriend Came Back from the War d’Olia Lialina, composée de panneaux noir et blanc.",
+                "cleaningDesktop": "Capture d’un bureau d’ordinateur rempli de captures d’écran, de photos et de fichiers.",
+                "haircutFolder": "Capture d’une page web présentant un collage de photographies personnelles.",
+                "dancingArtwork": "Montage de danseuses et de personnages découpés sur un fond clair.",
+                "tomatoLive": "Triptyque de captures d’un direct vidéo de Molly Soda avec des filtres et des interfaces de réseau social.",
+                "mobileQrCode": "Code QR permettant d’ouvrir la version mobile du site.",
+                "sticker": "Autocollant artistique « {name} » à déplacer sur le bureau."
+        },
+        "controls": {
+                "backHome": "Retour à la page d’accueil",
+                "saveComposition": "Enregistrer la composition",
+                "scrollStickersUp": "Faire défiler les autocollants vers le haut",
+                "scrollStickersDown": "Faire défiler les autocollants vers le bas",
+                "closeImagePreview": "Fermer l’aperçu de l’image"
+        },
         "landing": {
                 "title" : "Desktop Dump Archive",
                 "subtitle" : "2020 – en cours",

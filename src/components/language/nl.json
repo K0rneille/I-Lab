@@ -1,4 +1,25 @@
 {
+        "imageAlt": {
+                "mollyBanner": "Banner van Molly Soda, samengesteld uit een collage van afbeeldingen.",
+                "desktopArchive": "Schermafbeelding van een computerbureaublad vol bestanden, afbeeldingen en vensters.",
+                "mollyCollage": "Portret van Molly Soda omringd door vlinders en bloemen tegen een blauwe achtergrond.",
+                "mollyPortrait": "Portret van Molly Soda in een rood jasje voor een blauwe muur.",
+                "deepAscii": "Deep ASCII van Vuk Ćosić: een afbeelding opgebouwd uit groene tekens op een zwarte achtergrond.",
+                "browserArtwork": "Schermafbeelding van het webkunstwerk My Boyfriend Came Back from the War van Olia Lialina, opgebouwd uit zwart-witte panelen.",
+                "cleaningDesktop": "Schermafbeelding van een computerbureaublad vol schermafbeeldingen, foto's en bestanden.",
+                "haircutFolder": "Webpagina met een collage van persoonlijke foto's.",
+                "dancingArtwork": "Montage van dansers en uitgeknipte figuren tegen een lichte achtergrond.",
+                "tomatoLive": "Drie schermafbeeldingen van een livestream van Molly Soda met overlays en filters van sociale media.",
+                "mobileQrCode": "QR-code om de mobiele versie van de site te openen.",
+                "sticker": "Kunststicker ‘{name}’ om op het bureaublad te plaatsen."
+        },
+        "controls": {
+                "backHome": "Terug naar de startpagina",
+                "saveComposition": "Compositie opslaan",
+                "scrollStickersUp": "Stickers omhoog scrollen",
+                "scrollStickersDown": "Stickers omlaag scrollen",
+                "closeImagePreview": "Afbeeldingsvoorbeeld sluiten"
+        },
         "landing": {
                 "title" : "Desktop Dump Archive",
                 "subtitle" : "2020 – in uitvoering",
@@ -67,4 +88,3 @@
         ]
 }
 }
-

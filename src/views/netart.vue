@@ -1,11 +1,29 @@
 <script setup>
+import { ref } from 'vue'
 import { useI18n } from 'vue-i18n'
+import ImagePreviewDialog from '../components/imagePreview.vue'
 import trad from '../components/trad.vue'
 
 const { locale } = useI18n()
 
 const changeLang = (code) => {
   locale.value = code
+}
+
+const preview = ref(null)
+let previewTrigger = null
+
+const openPreview = (event) => {
+  previewTrigger = event.currentTarget
+  preview.value = {
+    src: previewTrigger.currentSrc,
+    alt: previewTrigger.alt,
+  }
+}
+
+const closePreview = () => {
+  preview.value = null
+  previewTrigger?.focus()
 }
 </script>
 
@@ -23,16 +41,32 @@ const changeLang = (code) => {
     <section>
       <img
         class="ascii-img"
+        :class="{ 'image-preview-trigger': true }"
         src="../components/img/netart2.webp"
-        alt=""
+        :alt="$t('imageAlt.deepAscii')"
+        role="button"
+        tabindex="0"
+        aria-haspopup="dialog"
+        :aria-label="$t('imageAlt.deepAscii')"
+        @click="openPreview"
+        @keydown.enter.prevent="openPreview"
+        @keydown.space.prevent="openPreview"
       >
       <span class="ascii-caption">Vuk Ćosić, “Deep ASCII”, 1998</span>
       <p class="small-txt">{{ $t('artisticMovement.txt[1]') }}</p>
       <p class="bottom-txt">{{ $t('artisticMovement.txt[2]') }}</p>
       <img
         class="browser-img"
+        :class="{ 'image-preview-trigger': true }"
         src="../components/img/netart1.webp"
-        alt=""
+        :alt="$t('imageAlt.browserArtwork')"
+        role="button"
+        tabindex="0"
+        aria-haspopup="dialog"
+        :aria-label="$t('imageAlt.browserArtwork')"
+        @click="openPreview"
+        @keydown.enter.prevent="openPreview"
+        @keydown.space.prevent="openPreview"
       >
       <span class="browser-caption">Olia Lialina, “My Boyfriend Came Back from the War”, 1996</span>
     </section>
@@ -41,6 +75,12 @@ const changeLang = (code) => {
       <trad :inline="true" @change-lang="changeLang" />
       <router-link class="nav" to="/cdesktop">C:/desktop</router-link>
     </footer>
+    <ImagePreviewDialog
+      v-if="preview"
+      :src="preview.src"
+      :alt="preview.alt"
+      @close="closePreview"
+    />
   </main>
 </template>
 

@@ -1,11 +1,30 @@
 <script setup>
+import { ref } from 'vue'
 import { useI18n } from 'vue-i18n'
+import ImagePreviewDialog from '../components/imagePreview.vue'
 import trad from '../components/trad.vue'
 
 const { locale } = useI18n()
 
 const changeLang = (code) => {
   locale.value = code
+}
+
+const preview = ref(null)
+let previewTrigger = null
+
+const openPreview = (event) => {
+  previewTrigger = event.currentTarget
+  preview.value = {
+    src: previewTrigger.currentSrc,
+    alt: previewTrigger.alt,
+    variant: previewTrigger.dataset.previewSize ?? '',
+  }
+}
+
+const closePreview = () => {
+  preview.value = null
+  previewTrigger?.focus()
 }
 </script>
 
@@ -24,14 +43,31 @@ const changeLang = (code) => {
       <p class="small-txt">{{ $t('Author.txt[1]') }}</p>
       <img
         class="small-img"
+        data-preview-size="molly-collage"
+        :class="{ 'image-preview-trigger': true }"
         src="../components/img/mollysoda.webp"
-        alt=""
+        :alt="$t('imageAlt.mollyCollage')"
+        role="button"
+        tabindex="0"
+        aria-haspopup="dialog"
+        :aria-label="$t('imageAlt.mollyCollage')"
+        @click="openPreview"
+        @keydown.enter.prevent="openPreview"
+        @keydown.space.prevent="openPreview"
       >
       <p class="left-txt">{{ $t('Author.txt[2]') }}</p>
       <img
         class="big-img"
+        :class="{ 'image-preview-trigger': true }"
         src="../components/img/mollysoda1.webp"
-        alt=""
+        :alt="$t('imageAlt.mollyPortrait')"
+        role="button"
+        tabindex="0"
+        aria-haspopup="dialog"
+        :aria-label="$t('imageAlt.mollyPortrait')"
+        @click="openPreview"
+        @keydown.enter.prevent="openPreview"
+        @keydown.space.prevent="openPreview"
       >
     </section>
 
@@ -39,6 +75,13 @@ const changeLang = (code) => {
       <trad :inline="true" @change-lang="changeLang" />
       <router-link class="nav" to="/netart">Net.art</router-link>
     </footer>
+    <ImagePreviewDialog
+      v-if="preview"
+      :src="preview.src"
+      :alt="preview.alt"
+      :variant="preview.variant"
+      @close="closePreview"
+    />
   </main>
 </template>
 

@@ -4,9 +4,9 @@ import tumblr from './img/sponsors/tumblr.webp'
 import visitWallonia from './img/sponsors/visitwallonia.webp'
 
 const sponsors = [
-    { name: 'designmuseumbrussels', img: designMuseumBrussels },
+    { name: 'Design Museum Brussels', img: designMuseumBrussels },
     { name: 'tumblr', img: tumblr },
-    { name: 'visitwallonia', img: visitWallonia },
+    { name: 'Visit Wallonia', img: visitWallonia },
 ]
 
 </script>
@@ -28,9 +28,11 @@ const sponsors = [
         >
 
 
-        <img 
+        <img
         class="sponsor-img"
-        v-bind:src= "item.img"/>
+        v-bind:src= "item.img"
+        :alt="item.name"
+        />
 
         
         </div>
@@ -47,9 +49,11 @@ const sponsors = [
         >
 
 
-        <img 
+        <img
         class="sponsor-img"
-        v-bind:src= "item.img"/>
+        v-bind:src= "item.img"
+        alt=""
+        />
 
         
         </div>

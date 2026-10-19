@@ -128,6 +128,15 @@ p{
   color: #FF0000;
 }
 
+.image-preview-trigger{
+  cursor: zoom-in;
+}
+
+.image-preview-trigger:focus-visible{
+  outline: 3px solid $link-color;
+  outline-offset: 3px;
+}
+
 header{
   display: flex;
   align-items: center;

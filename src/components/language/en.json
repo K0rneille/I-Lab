@@ -1,4 +1,25 @@
 {
+        "imageAlt": {
+                "mollyBanner": "Molly Soda banner made from a collage of images.",
+                "desktopArchive": "A computer desktop covered with files, images and open windows.",
+                "mollyCollage": "Portrait of Molly Soda surrounded by butterflies and flowers against a blue background.",
+                "mollyPortrait": "Portrait of Molly Soda wearing a red jacket in front of a blue wall.",
+                "deepAscii": "Vuk Ćosić’s Deep ASCII artwork: an image formed from green characters on a black background.",
+                "browserArtwork": "Screenshot of Olia Lialina’s My Boyfriend Came Back from the War web artwork, arranged in black-and-white panels.",
+                "cleaningDesktop": "A computer desktop filled with screenshots, photographs and files.",
+                "haircutFolder": "A web page showing a collage of personal photographs.",
+                "dancingArtwork": "A montage of dancers and cut-out figures against a light background.",
+                "tomatoLive": "Three screenshots from a Molly Soda livestream with social media overlays and filters.",
+                "mobileQrCode": "QR code for opening the mobile version of the site.",
+                "sticker": "Artwork sticker “{name}” to place on the desktop."
+        },
+        "controls": {
+                "backHome": "Return to the home page",
+                "saveComposition": "Save composition",
+                "scrollStickersUp": "Scroll stickers up",
+                "scrollStickersDown": "Scroll stickers down",
+                "closeImagePreview": "Close image preview"
+        },
         "landing": {
                 "title" : "Desktop Dump Archive",
                 "subtitle" : "2020 – in progress",
@@ -67,5 +88,3 @@
         ]
 }
 }
-
-

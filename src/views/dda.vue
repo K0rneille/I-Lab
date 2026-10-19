@@ -1,11 +1,30 @@
 <script setup>
+import { ref } from 'vue'
 import { useI18n } from 'vue-i18n'
+import ImagePreviewDialog from '../components/imagePreview.vue'
 import trad from '../components/trad.vue'
 
 const { locale } = useI18n()
 
 const changeLang = (code) => {
   locale.value = code
+}
+
+const preview = ref(null)
+let previewTrigger = null
+
+const openPreview = (event) => {
+  previewTrigger = event.currentTarget
+  preview.value = {
+    src: previewTrigger.currentSrc,
+    alt: previewTrigger.alt,
+    variant: previewTrigger.dataset.previewSize ?? '',
+  }
+}
+
+const closePreview = () => {
+  preview.value = null
+  previewTrigger?.focus()
 }
 </script>
 
@@ -24,14 +43,31 @@ const changeLang = (code) => {
       <p class="right-txt">{{ $t('work.txt[1]') }}</p>
       <img
         class="small-img"
-        src="../components/img/desktopheart.webp"
-        alt=""
+        data-preview-size="molly-banner-square"
+        :class="{ 'image-preview-trigger': true }"
+        src="../components/img/MollySoda_banner.webp"
+        :alt="$t('imageAlt.mollyBanner')"
+        role="button"
+        tabindex="0"
+        aria-haspopup="dialog"
+        :aria-label="$t('imageAlt.mollyBanner')"
+        @click="openPreview"
+        @keydown.enter.prevent="openPreview"
+        @keydown.space.prevent="openPreview"
       >
       <p class="small-txt">{{ $t('work.txt[2]') }}</p>
       <img
         class="big-img"
+        :class="{ 'image-preview-trigger': true }"
         src="../components/img/desktop.webp"
-        alt=""
+        :alt="$t('imageAlt.desktopArchive')"
+        role="button"
+        tabindex="0"
+        aria-haspopup="dialog"
+        :aria-label="$t('imageAlt.desktopArchive')"
+        @click="openPreview"
+        @keydown.enter.prevent="openPreview"
+        @keydown.space.prevent="openPreview"
       >
       <p class="left-txt">{{ $t('work.txt[3]') }}</p>
     </section>
@@ -40,6 +76,13 @@ const changeLang = (code) => {
       <trad :inline="true" @change-lang="changeLang" />
       <router-link class="nav" to="/mollysoda">Molly Soda</router-link>
     </footer>
+    <ImagePreviewDialog
+      v-if="preview"
+      :src="preview.src"
+      :alt="preview.alt"
+      :variant="preview.variant"
+      @close="closePreview"
+    />
   </main>
 </template>
 
@@ -55,7 +98,8 @@ section{
 
 .small-img{
   width: 194px;
-  height: auto;
+  height: 194px;
+  object-fit: cover;
   grid-column: 3 / 4;
   grid-row: 1 / 2;
   align-self: end;
@@ -135,6 +179,7 @@ section{
 
   .small-img{
     width: 194px;
+    height: 194px;
     max-width: 100%;
     align-self: flex-start;
   }

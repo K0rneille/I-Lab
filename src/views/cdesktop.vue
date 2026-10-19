@@ -293,7 +293,7 @@ const submitEmail = () => {
 <template>
   <main class="cdesktop">
     <header>
-      <router-link to="/">
+      <router-link to="/" :aria-label="$t('controls.backHome')">
         <img class="back" src="../components/icons/arrow-left-s-line.svg" alt="">
       </router-link>
       <h1>C:/desktop</h1>
@@ -325,7 +325,7 @@ const submitEmail = () => {
             }"
             @pointerdown="moveSticker($event, sticker)"
           >
-            <img :src="sticker.url" :alt="sticker.name" draggable="false">
+            <img :src="sticker.url" :alt="$t('imageAlt.sticker', { name: sticker.name })" draggable="false">
             <button
               class="resize-handle"
               type="button"
@@ -334,7 +334,7 @@ const submitEmail = () => {
           </div>
         </div>
       </div>
-      <button class="save-button" type="button"  @click="openEmailPopup">
+      <button class="save-button" type="button" :aria-label="$t('controls.saveComposition')" @click="openEmailPopup">
         <img src="../components/icons/save-3-fill.svg" alt="">
       </button>
 
@@ -349,11 +349,11 @@ const submitEmail = () => {
             @dragstart="handlePaletteDragStart($event, sticker)"
             @pointerdown="handlePalettePointerDown($event, sticker)"
           >
-            <img :src="sticker.url" :alt="sticker.name" draggable="false">
+            <img :src="sticker.url" :alt="$t('imageAlt.sticker', { name: sticker.name })" draggable="false">
           </div>
         </div>
         <div ref="scrollbarTrack" class="stickers-scrollbar">
-          <button class="scrollbar-arrow" type="button" @click="scrollStickers(-180)">
+          <button class="scrollbar-arrow" type="button" :aria-label="$t('controls.scrollStickersUp')" @click="scrollStickers(-180)">
             <img src="../components/icons/arrow-up-s-fill.svg" alt="">
           </button>
           <div class="scrollbar-track">
@@ -364,7 +364,7 @@ const submitEmail = () => {
               @pointerdown="startScrollbarDrag"
             ></button>
           </div>
-          <button class="scrollbar-arrow" type="button" @click="scrollStickers(180)">
+          <button class="scrollbar-arrow" type="button" :aria-label="$t('controls.scrollStickersDown')" @click="scrollStickers(180)">
             <img src="../components/icons/arrow-down-s-fill.svg" alt="">
           </button>
         </div>

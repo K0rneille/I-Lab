@@ -62,7 +62,7 @@ const changeLang = (code) => {
             >
                 <img src="../components/icons/close-line.svg" alt="">
             </button>
-            <img src="../components/img/qrcode.svg" alt="QR code">
+            <img src="../components/img/qrcode.svg" :alt="$t('imageAlt.mobileQrCode')">
         </div>
     </div>
   </main>
