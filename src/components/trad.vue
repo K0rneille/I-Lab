@@ -208,7 +208,7 @@ onBeforeUnmount(() => {
         transition:
         transform 0.3s ease-out,
         opacity 0.3s ease-out;
-        transition-delay: calc((var(--total) - var(--i)) * 80ms);
+        transition-delay: calc( var(--i) * 80ms);
             // état ouvert : chaque option arrive avec un retard croissant
         .form__select--active & {
       opacity: 1;
