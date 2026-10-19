@@ -39,5 +39,6 @@ __screenshots__/
 *.timestamp-*-*.mjs
 
 
-# public
-public
+# Public assets (except server configuration copied to production builds)
+public/*
+!public/.htaccess
