@@ -1,5 +1,6 @@
 <script setup>
 import { computed, onMounted, onBeforeUnmount, ref } from 'vue'
+import initialCompositions from '../data/data.json'
 
 const stickerFiles = import.meta.glob(
   '../components/img/interaction/*.{gif,webp,png,jpg,jpeg}',
@@ -27,6 +28,12 @@ const scrollMetrics = ref({ top: 0, height: 0, scrollHeight: 0, trackHeight: 0 }
 const draggingScrollbar = ref(false)
 const scrollbarDragStart = ref(0)
 const scrollTopAtDragStart = ref(0)
+const savedCompositions = ref(
+  Array.isArray(initialCompositions) ? initialCompositions : [],
+)
+const localCompositions = ref([])
+const saveError = ref('')
+const compositionsStorageKey = 'cdesktop-compositions'
 
 const popupTitle = computed(() => (emailSubmitted.value ? 'Composition enregistrée' : 'Enregistrer la composition'))
 const scrollbarThumbHeight = computed(() => {
@@ -86,6 +93,18 @@ const stopScrollbarDrag = () => {
 
 onMounted(() => {
   updateScrollbar()
+  try {
+    const storedCompositions = localStorage.getItem(compositionsStorageKey)
+    if (storedCompositions) {
+      const storedLocalCompositions = JSON.parse(storedCompositions)
+      if (Array.isArray(storedLocalCompositions)) {
+        localCompositions.value = storedLocalCompositions
+        savedCompositions.value = [...savedCompositions.value, ...storedLocalCompositions]
+      }
+    }
+  } catch (error) {
+    console.error('Impossible de lire les compositions enregistrées.', error)
+  }
   window.addEventListener('resize', updateScrollbar)
 })
 
@@ -217,15 +236,44 @@ const resizeSticker = (event, sticker) => {
 
 const openEmailPopup = () => {
   emailSubmitted.value = false
+  saveError.value = ''
   isEmailPopupOpen.value = true
 }
 
 const closeEmailPopup = () => {
   isEmailPopupOpen.value = false
   emailSubmitted.value = false
+  saveError.value = ''
 }
 
 const submitEmail = () => {
+  const emailNumber = savedCompositions.value.length + 1
+  const compositionRecord = {
+    id: `email-${emailNumber}`,
+    email: email.value,
+    images: composition.value.map((sticker, index) => ({
+      id: `image-${index + 1}`,
+      stickerId: sticker.id,
+      name: sticker.name,
+      url: sticker.url,
+      x: sticker.x,
+      y: sticker.y,
+      size: sticker.size,
+      zIndex: sticker.zIndex,
+    })),
+  }
+  const updatedCompositions = [...localCompositions.value, compositionRecord]
+
+  try {
+    localStorage.setItem(compositionsStorageKey, JSON.stringify(updatedCompositions))
+    localCompositions.value = updatedCompositions
+    savedCompositions.value = [...savedCompositions.value, compositionRecord]
+  } catch (error) {
+    saveError.value = 'La composition n’a pas pu être enregistrée.'
+    console.error('Impossible d’enregistrer la composition.', error)
+    return
+  }
+
   emailSubmitted.value = true
 }
 </script>
@@ -320,6 +368,7 @@ const submitEmail = () => {
         <template v-if="!emailSubmitted">
           <label for="composition-email">Votre adresse mail</label>
           <input id="composition-email" v-model="email" type="email" required placeholder="nom@exemple.com">
+          <p v-if="saveError" class="email-popup__error">{{ saveError }}</p>
           <button class="email-popup__submit" type="submit">Enregistrer</button>
         </template>
         <template v-else>
@@ -578,5 +627,9 @@ const submitEmail = () => {
 .email-popup p {
   margin: 0 0 18px;
   font-size: $small-txt;
+}
+
+.email-popup__error {
+  color: #f00;
 }
 </style>
