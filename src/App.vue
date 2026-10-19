@@ -35,8 +35,7 @@
         reset()
         allerAlaccueil()
       }
- 
-      
+
     });
 
     window.addEventListener('pointerdown', (e)=> {
@@ -44,8 +43,8 @@
 
     })
 
-    onMounted(() => timer.start());
-    onUnmounted(() => timer.stop());   // ← nettoie l'intervalle
+  onMounted(() => timer.start());
+  onUnmounted(() => timer.stop());   // ← nettoie l'intervalle
 
   function reset () {
 
@@ -55,13 +54,8 @@
 
   }
   
-timerMain()
-
-
-window.addEventListener('pointerdown', (e)=> {
   
-})
-
+timerMain()
 
 
 
