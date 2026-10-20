@@ -126,8 +126,8 @@ const closePreview = () => {
 }
 
 section {
-  grid-template-columns: repeat(4, 1fr);
-  grid-template-rows: auto auto;
+  grid-template-columns: auto auto auto auto;
+  grid-template-rows: 250px auto;
   gap: 20px;
 }
 

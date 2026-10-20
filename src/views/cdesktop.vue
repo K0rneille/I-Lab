@@ -422,7 +422,7 @@ const submitEmail = () => {
 
 .window {
   width: 100%;
-  height: 700px;
+  height: 517px;
   border: 6px solid $link-color;
   box-sizing: border-box;
   position: relative;
@@ -610,6 +610,8 @@ const submitEmail = () => {
     padding: 24px;
     text-align: center;
     font-size: $mobile-txt;
+    color: $bg-color;
+    background: #808080;
   }
 
   .cdesktop-controls{

@@ -225,7 +225,7 @@ h3{
         display: flex;
         flex-direction: column;
         align-items: flex-end;
-        gap: 8px;
+        gap: 48px;
         margin: 12px 0;
         padding: 0;
     }

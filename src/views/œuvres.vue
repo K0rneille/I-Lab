@@ -112,9 +112,9 @@ const closePreview = () => {
 @use '../app.scss' as *;
 
 section{
-  grid-template-columns: repeat(4, 1fr);
-  grid-template-rows: auto auto;
-  justify-content: center;
+  grid-template-columns: 275px 200px 360px 250px;
+  grid-template-rows: 170px 280px;
+  justify-content: space-between;
   gap: 20px;
 }
 
@@ -128,18 +128,18 @@ section{
 }
 
 .folder-img{
-  width: 400px;
+  width: 200px;
   height: auto;
   grid-column: 2 / 3;
   grid-row: 1 / 2;
-  align-self: end;
+  align-self: start;
   justify-self: end;
 }
 
 .top-txt{
   grid-column: 3 / 5;
   grid-row: 1 / 2;
-  align-self: end;
+  align-self: start;
   justify-self: start;
   max-width: 275px;
   font-size: $small-txt;
@@ -161,7 +161,7 @@ section{
 }
 
 .tomato-img{
-  width: 100%;
+  width: 250px;
   height: auto;
   grid-column: 4 / 5;
   grid-row: 2 / 3;

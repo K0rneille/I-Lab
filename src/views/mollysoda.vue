@@ -108,7 +108,7 @@ const closePreview = () => {
 
 section {
   grid-template-columns: repeat(4, 1fr);
-  grid-template-rows: auto auto;
+  grid-template-rows: 183px 280px;
   justify-content: center;
   gap: 20px;
 }

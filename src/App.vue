@@ -111,7 +111,7 @@ h2{
 p{
   font-size: $txt;
   margin: 0;
-  line-height: 1.4;
+  line-height: 0.95;
 }
 
 .nav{

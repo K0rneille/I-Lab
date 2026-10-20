@@ -41,6 +41,7 @@ onBeforeUnmount(() => {
         role="dialog"
         aria-modal="true"
         :aria-label="props.alt"
+        @click.self="closePreview"
       >
         <button
           ref="closeButton"
@@ -49,7 +50,7 @@ onBeforeUnmount(() => {
           :aria-label="$t('controls.closeImagePreview')"
           @click="closePreview"
         >
-          ×
+          <img src="./icons/close-line.svg" alt="">
         </button>
         <img
           class="image-preview-full"
@@ -83,7 +84,7 @@ onBeforeUnmount(() => {
 
 .image-preview-full{
   display: block;
-  max-width: 100%;
+  max-width: 1000px;
   max-height: 100%;
   width: auto;
   height: auto;
@@ -107,10 +108,15 @@ onBeforeUnmount(() => {
   height: 40px;
   border: 2px solid #243026;
   background: #fff;
-  color: #243026;
-  font-size: 28px;
-  line-height: 1;
+  display: grid;
+  place-items: center;
+  padding: 0;
   cursor: pointer;
+}
+
+.image-preview-close img{
+  width: 24px;
+  height: 24px;
 }
 
 @media screen and (max-width: 1100px){

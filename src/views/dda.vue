@@ -91,14 +91,14 @@ const closePreview = () => {
 
 section{
   grid-template-columns: auto auto 194px auto;
-  grid-template-rows: auto auto;
+  grid-template-rows: 183px 279px;
   justify-content: center;
   gap: 20px;
 }
 
 .small-img{
-  width: 194px;
-  height: 194px;
+  width: 100%;
+  height: 174px;
   object-fit: cover;
   grid-column: 3 / 4;
   grid-row: 1 / 2;
