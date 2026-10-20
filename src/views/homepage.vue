@@ -185,8 +185,7 @@ h3{
     .homepage{
         box-sizing: border-box;
         width: 100%;
-        height: 100vh;
-        height: 100dvh;
+        height: 100%;
         min-height: 0;
         margin: 0;
         padding: 10px;
